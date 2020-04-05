@@ -17,8 +17,9 @@ zakres wpływu na swoje środowisko. Zwierzę będzie musiało w sposób aktywny
 głód, odpoczynek, etc. W sposób aktywny, tj. podejmować kroki do osiągnięcia celu, np. szukając pożywienia, unikać
 potencjalnych zagrożeń, etc.
 
-Będą różne typy zwierząt różniące się pod wieloma względami: roślinożercy i mięsożercy, jak dużo potomstwa będą
-produkować, jakich strategii będą używać aby przeżyć, etc.
+Każdy gatunek będzie miał określone statystyki: wytrzymałość, siła i szybkość. Statystyki zwierząt tego samego gatunku mogą się delikatnie różnić. Jeśli wytrzymałość spadnie do 0 to osobnik umiera. Wytrzymałość można stracić podczas konfrontacji z innymi zwierzętami oraz można ją odzyskać odpoczywając i jedząc. Siła odpowiada za to jak dobrze zwierze radzi sobie w walce, a szybkość jak sprawnie przemieszcza się po świecie.
+
+Będą różne typy zwierząt różniące się pod wieloma względami: roślinożercy i mięsożercy, samiec i samica, młode i dorosłe, jak dużo potomstwa będą produkować, jakich strategii będą używać aby przeżyć, etc.
 
 Ze względu na rozdzielczość symulacji (jedna komórka reprezentująca powierzchnię 10-100m^2) nie będą symulowane
 zwierzęta małe jak np. owady lub będą one symulowane w sposób pasywny (np. jak rośliny lub jako właściwość komórki).
