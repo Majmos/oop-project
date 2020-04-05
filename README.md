@@ -11,7 +11,7 @@ Rośliny będą ogranizmami bardziej pasywnymi, tzn. będą reagowały na zmiany
 stopniu, np. jeżeli środowisko będzie miało odpowiednie nasłonecznienie i wilgotność, będą rosnąć; w przeciwnym wypadku,
 będą umierać. Będą miały również bardzo ograniczoną możliwość wpływania na środowisko czy inne organizmy.
 
-# Zwierzęta
+### Zwierzęta
 Elementami wyróżniającymi organizmy zwierzęce będzie przede wszystkim możliwość zmiany swojej pozycji oraz większy
 zakres wpływu na swoje środowisko. Zwierzę będzie musiało w sposób aktywny zaspokajać swoje potrzeby fizjologiczne:
 głód, odpoczynek, etc. W sposób aktywny, tj. podejmować kroki do osiągnięcia celu, np. szukając pożywienia, unikać
