@@ -79,6 +79,63 @@ Poza zakresem (nie będą zaimplementowane):
 - [Purges](https://stellaris.paradoxwikis.com/Population#Purges)
 - [Refugees](https://stellaris.paradoxwikis.com/Population#Refugees)
 
+### Obiekty
+
+#### Państwo
+
+**Państwo (state)** znajduje się na najwyższym poziomie symulacji, zawiera **światy (worlds)** i w obrębie państwa
+występuje migracja ludności między światami. Państwo posiada również globalny (dzielony między wszystkimi światami) stan
+posiadanych zasobów, takich jak minerały, dobra konsumpcyjne, etc.
+
+#### Świat
+
+**Światy (worlds)** zawierają populacje, miejsca pracy, dobra naturalne możliwe do wydobywania, etc. W grze Stellaris są
+to np. planety kolonizowane przez gracza. Światy posiadają swoje właściwości, np. rozmiar, który wpływa na to jak dużą
+populację świat jest w stanie utrzymać, możliwe do wybudowania budowle - np. na świecie A gracz może wybudować więcej
+kopalni, a na świecie B - farm. Światy mogą też mieć dowolne modyfikatory - np. +10% więcej punktów badań lub -10%
+zadowolenia populacji.
+
+#### Popy
+
+**Popy (Pops)** to jednostki reprezentujące jakąś część populacji. Popy posiadają pewien koszt utrzymania (zasoby które
+zużywają i miejsce zamieszkania które należy im zapewnić). Ponadto mogą pracować i konsekwentnie produkować nowe zasoby,
+lub - z braku miejsc pracy - nie pracować. Popy mogą być orgraniczne i rozmnażać się samoczynnie, lub syntetyczne
+(roboty) które inne popy mogą produkować jeżeli są zatrudnione w odpowiednim miejscu pracy. Zużycie zasobów przez popa
+jest zależne od jego **warstwy społecznej (stratum)** oraz innych możliwych modyfikatorów.
+
+### Warstwy społeczne
+
+Populacja dzieli wg. zawodu się na 3 warstwy społeczne - robotnicy, specjaliści i władcy.
+
+- Robotnicy: produkują podstawowe zasoby takie jak minerały, żywność, mają najniższe standardy życiowe i zużycie zasobów
+- Specjaliści: zamieniają podstawowe zasoby w inne, bardziej wartościowe zasoby, np. minerały -> dobra konsumpcyjne i
+  stopy metali, dobra konsumpcyjne -> punkty badań, stopy metali -> produkcja syntetycznych popów. Mają wyższe zużycie
+  zasobów
+- Władcy są najbardziej wpływową grupą społeczną i mają najwyższe zużycie zasobów. Zazwyczaj nie produkują niczego ale
+  są potrzebni do funkcjonowania świata.
+
+#### Miejsca pracy
+
+Dzielą się na **dystrykty** czyli zależne w ilości od świata podstawowe miejsca pracy i miejsca zamieszkania oraz
+**budynki** których możliwa do wybudowania ilość jest zależna od ilości populacji zamieszkującej świat. Miejsca pracy
+zapewniane przez dystrykty są najczęściej miejscami pracy robotników (kopalnie, farmy, elektrownie).
+
+#### Zasoby
+
+Zasoby są produkowane i konsumowane przez populacje:
+
+- kredyty energetyczne: "waluta" gry, używana do utrzymania budynków oraz można za nie kupować inne zasoby na rynku
+  (rynek nie leży w zakresie symulacji)
+- minerały: używane do budowania budynków oraz podstawowy surowiec przerabiany przez populacje w inne dobra np. dobra
+  konsumpcyjne
+- żywność: zużywana przez organiczne populacje
+- dobra konsumpcyjne: produkowane przez rzemieślików z minerałów; jw. oraz zamieniane przez naukowców w punkty badań
+- stopy metali: produkowane przez metalurgów w hutach; używane do budowy statków (poza zakresem) oraz nowych
+  syntetycznych popów.
+- punkty badań: produkowane przez naukowców; szybkość odkrywania technologii
+
+Więcej informacji na [wiki](https://stellaris.paradoxwikis.com/Planet_interface).
+
 ### Modelowanie zewnętrznych elementów
 
 System populacji działa w grupie z innymi elementami i mechanikami gry, takimi jak:
