@@ -51,6 +51,38 @@ podczas polowania, jak i po (dzielenie się pożywieniem).
 Ze względu na rozdzielczość symulacji (jedna komórka reprezentująca powierzchnię 10-100m^2) nie będą symulowane
 zwierzęta małe jak np. owady lub będą one symulowane w sposób pasywny (np. jak rośliny lub jako właściwość komórki).
 
+### Odrzucone pomysły
+
+System gatunków z którym wyszliśmy na początek, zakładał istnienie **genów** jako obiektu definiującego statystyki
+organizmów. Urodzeni przedstawiciele gatunków dziedziczyliby geny po swoich rodzicach. Również występowałyby przy
+poczęciu mutacje genów, które zmieniałyby w jakiś sposób statystyki ogranizmu. W ten sposób, można by symulować selekcję
+naturalną i w konsekwencji ewolucję organizmów.
+
+Na stan obecny ten system znajduje się poza zakresem i zamiast niego zaimplementowany zostanie prostszy system **modelu
+gatunków** wg. którego średnie statystyki gatunku są stałe i nie zmieniają się w czasie. Jego odrzucenie spowodowało
+istnienie następujących problemów:
+
+#### Problem #1 - Możemy się nie wyrobić
+
+Ponieważ nie została jeszcze wykonana żadna dokumentacja, a tym bardziej nie została napisana ani jedna linijka kodu,
+nie wiemy jak szybko jesteśmy w stanie zaimplementować całą symulację, dlatego w myśl
+[zasady 90/90](https://en.wikipedia.org/wiki/Ninety-ninety_rule) **system genów** znajduje się poza zakresem symulacji
+do momentu zakończenia całego projektu z prostszym **systemem modeli gatunków**. Jeżeli zostanie trochę czasu oraz
+zostaną rozwiązane kluczowe problemy projektowe, system gatunków może zostać zmieniony.
+
+#### Problem #2 - Ewolucja gatunków
+
+Ewolucja zakłada zmianę gatunków w czasie. Jeżeli przedstawiciele danego gatunku np. średnio zwiększają swoją maksymalną
+szybkość, to model tego gatunku powinien również zmienić się, aby stale w sposób poprawny opisywać przeciętnego
+przedstawiciela gatunku. Mogą również powstawać nowe gatunki, kiedy np. część populacji migruje do nowego środowiska w
+którym optymalne do przeżycia statystyki i zachowania są trochę inne. Wówczas nie jest jasne od kiedy ten podzbiór
+populacji można nazwać nowym gatunkiem oraz czy powinien zachować lub stracić kompatybilność reprodukcyjną z
+przedstawicielami rodzicielskiego gatunku.
+
+Najważniejszą konsekwencją tego problemu jest to, że ponieważ niektóre gatunki wywodzą się z innych i, konsekwentnie, są
+do nich bardziej podobne niż inne, gatunki zamiast listy osobnych elementów, powinny być zaimplementowane jako drzewo
+reflektujące związki między nimi.
+
 ## System POP
 
 > Symulacja populacji w stylu gry [Stellaris](https://store.steampowered.com/app/281990/Stellaris/)
