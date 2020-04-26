@@ -1,5 +1,10 @@
 package pwr.sim;
 
+import pwr.sim.animal.Animal;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class World {
     public World(int width, int height) {
         this.width = width;
@@ -9,6 +14,13 @@ public class World {
             for(int x = 0; x < this.width; x++) {
                 this.tiles[y * width + x] = new Tile();
             }
+        }
+    }
+
+    public void populate(int numAnimals) {
+        this.animals = new ArrayList(numAnimals);
+        for(int i = 0; i < numAnimals; i++) {
+            this.animals.add(new Animal());
         }
     }
 
@@ -22,6 +34,7 @@ public class World {
     }
 
     private Tile[] tiles;
+    private List<Animal> animals;
     private int width;
     private int height;
 }
