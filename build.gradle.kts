@@ -6,6 +6,21 @@
  * User Manual available at https://docs.gradle.org/6.1.1/userguide/tutorial_java_projects.html
  */
 
+val umlDoclet by configurations.creating
+
+tasks.register("configureJavadoc") {
+    doLast {
+        tasks.javadoc {
+            options.docletpath = umlDoclet.files.toList()
+            options.doclet = "nl.talsmasoftware.umldoclet.UMLDoclet"
+        }
+    }
+}
+
+tasks.javadoc {
+    dependsOn("configureJavadoc")
+}
+
 plugins {
     // Apply the java plugin to add support for Java
     java
@@ -23,9 +38,10 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:28.1-jre")
-
     // Use JUnit test framework
     testImplementation("junit:junit:4.12")
+
+    umlDoclet("nl.talsmasoftware:umldoclet:2.+")
 }
 
 application {
