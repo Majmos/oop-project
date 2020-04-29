@@ -1,6 +1,6 @@
 package pwr.sim;
 
-import pwr.sim.animal.Animal;
+import pwr.sim.animal.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,19 @@ public class World {
                 this.tiles[y * width + x] = new Tile();
             }
         }
+        this.animals = new ArrayList<>();
     }
 
+    public void update() {
+        for(Animal animal: this.animals) {
+            animal.update();
+        }
+    }
+
+    // TODO: to properly configure how many animals of each species should be generated, we should use factory pattern
     public void populate(int numAnimals) {
-        this.animals = new ArrayList(numAnimals);
         for(int i = 0; i < numAnimals; i++) {
-            this.animals.add(new Animal());
+            this.animals.add(new Wolf());
         }
     }
 

@@ -13,6 +13,7 @@ tasks.register("configureJavadoc") {
         tasks.javadoc {
             options.docletpath = umlDoclet.files.toList()
             options.doclet = "nl.talsmasoftware.umldoclet.UMLDoclet"
+            options.showFromPrivate()
         }
     }
 }

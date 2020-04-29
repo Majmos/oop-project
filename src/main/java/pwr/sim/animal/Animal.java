@@ -1,9 +1,25 @@
 package pwr.sim.animal;
 
-public class Animal {
-    public Animal() {
+import pwr.sim.animal.ai.IAiBehaviour;
 
+public abstract class Animal {
+    private Animal() {}
+    public Animal(IAiBehaviour aiBehaviour) {
+        this.aiBehaviour = aiBehaviour;
     }
+
+    public void update() {
+        aiBehaviour.update();
+    }
+
+    // Chcemy zadeklarować w klasie rodzic że każda klasa pochodna będzie posiadać uchwyt do obiektu implementującego
+    // interfejs `IAiBehaviour` (specyficzny dla każdego obiektu). Jednak w tej klasie nie wiemy jaki konkretny typ
+    // obiektu `aiBehaviour` będzie zawierała klasa pochodna, toteż domyślny konstruktor klasy `Animal` nie może go
+    // zainicjalizować.
+    // Aby uniemożliwić skonstruowanie niezainicjalizowanego w pełni obiektu, domyślny konstruktor ustawiony został jako
+    // prywatny.
+    // Czy można zrobić to lepiej?
+    IAiBehaviour aiBehaviour;
 
     private int health;
     private int x;
