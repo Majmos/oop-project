@@ -8,7 +8,6 @@ import pwr.sim.animal.ai.state.AiStateSleep;
 public class AiBehaviourWolf implements IAiBehaviour {
     @Override
     public void update() {
-        System.out.println("Bl00dW00lF");
     }
 
     private AiStateHunt stateHunt;
