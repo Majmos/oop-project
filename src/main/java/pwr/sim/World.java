@@ -5,6 +5,7 @@ import pwr.sim.animal.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class World {
     public World(int width, int height, Tile[] tiles) {
@@ -42,7 +43,6 @@ public class World {
         }
 
         int height = y;
-        System.out.println(height);
         Tile[] tiles = new Tile[width * height];
 
         this.width = width;
@@ -59,19 +59,24 @@ public class World {
 
     // TODO: to properly configure how many animals of each species should be generated, we should use factory pattern
     public void populate(int numAnimals) {
+        Random pos = new Random();
         for(int i = 0; i < numAnimals; i++) {
-            this.animals.add(new Wolf());
-            
+            this.animals.add(new Wolf(pos.nextInt(50), pos.nextInt(50)));
         }
     }
 
     public void draw() {
+        System.out.print("\u001B[s");
         for(int y = 0; y < this.height; y++) {
             for(int x = 0; x < this.width; x++) {
                 this.tiles[y * width + x].draw();
             }
             System.out.println();
         }
+        for(int i = 0; i < animals.size(); i++){
+            animals.get(i).draw('-');
+        }
+        System.out.print("\u001B[u");
     }
 
     private Tile[] tiles;
