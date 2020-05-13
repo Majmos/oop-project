@@ -4,7 +4,7 @@ import pwr.sim.animal.ai.AiBehaviourHippo;
 
 public class Hippo extends Animal {
 
-    public Hippo(int x, int y) {
-        super(new AiBehaviourHippo(), x, y);
+    public Hippo(int y, int x) {
+        super(new AiBehaviourHippo(), y, x);
     }
 }

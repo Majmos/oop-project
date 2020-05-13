@@ -43,7 +43,6 @@ public class World {
         }
 
         int height = y;
-        System.out.println(height);
         Tile[] tiles = new Tile[width * height];
 
         this.width = width;
@@ -67,12 +66,14 @@ public class World {
     }
 
     public void draw() {
+        System.out.print("\u001B[s");
         for(int y = 0; y < this.height; y++) {
             for(int x = 0; x < this.width; x++) {
                 this.tiles[y * width + x].draw();
             }
             System.out.println();
         }
+        System.out.print("\u001B[u");
     }
 
     private Tile[] tiles;
