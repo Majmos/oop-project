@@ -7,6 +7,6 @@ public class Wolf extends Animal {
         super(new AiBehaviourWolf(), y, x);
     }
     public void draw() {
-        System.out.print("\u00B1[y;xH" + "\u00B1[37mW");
+        super.draw('W');
     }
 }

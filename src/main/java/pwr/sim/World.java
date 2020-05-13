@@ -73,6 +73,9 @@ public class World {
             }
             System.out.println();
         }
+        for(int i = 0; i < animals.size(); i++){
+            animals.get(i).draw('-');
+        }
         System.out.print("\u001B[u");
     }
 

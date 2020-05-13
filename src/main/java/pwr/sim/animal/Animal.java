@@ -23,6 +23,9 @@ public abstract class Animal {
     // Czy można zrobić to lepiej?
     IAiBehaviour aiBehaviour;
 
+    public void draw(char c) {
+    }
+
     private int health;
     private int x;
     private int y;
