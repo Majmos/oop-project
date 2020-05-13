@@ -61,6 +61,7 @@ public class World {
     public void populate(int numAnimals) {
         for(int i = 0; i < numAnimals; i++) {
             this.animals.add(new Wolf());
+            
         }
     }
 
