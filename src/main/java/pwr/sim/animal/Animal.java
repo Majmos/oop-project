@@ -4,8 +4,10 @@ import pwr.sim.animal.ai.IAiBehaviour;
 
 public abstract class Animal {
     private Animal() {}
-    public Animal(IAiBehaviour aiBehaviour) {
+    public Animal(IAiBehaviour aiBehaviour, int x, int y) {
         this.aiBehaviour = aiBehaviour;
+        this.x = x;
+        this.y = y;
     }
 
     public void update() {
