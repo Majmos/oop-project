@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>5</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>290</y>
-      <w>15</w>
-      <h>270</h>
+      <x>800</x>
+      <y>20</y>
+      <w>30</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;520.0</additional_attributes>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>810</x>
-      <y>280</y>
-      <w>50</w>
-      <h>15</h>
+      <x>760</x>
+      <y>0</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>_StateHunt_</panel_attributes>
     <additional_attributes/>
@@ -26,10 +26,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>835</x>
-      <y>335</y>
-      <w>130</w>
-      <h>20</h>
+      <x>810</x>
+      <y>110</y>
+      <w>260</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 getAnimalsInProximity(Point2D)</panel_attributes>
@@ -38,10 +38,10 @@ getAnimalsInProximity(Point2D)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>935</x>
-      <y>280</y>
-      <w>50</w>
-      <h>15</h>
+      <x>1010</x>
+      <y>0</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>_World_</panel_attributes>
     <additional_attributes/>
@@ -49,10 +49,10 @@ getAnimalsInProximity(Point2D)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>955</x>
-      <y>290</y>
-      <w>15</w>
-      <h>270</h>
+      <x>1050</x>
+      <y>20</y>
+      <w>30</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;520.0</additional_attributes>
@@ -60,10 +60,10 @@ getAnimalsInProximity(Point2D)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>830</x>
-      <y>325</y>
-      <w>10</w>
-      <h>190</h>
+      <x>800</x>
+      <y>90</y>
+      <w>20</w>
+      <h>430</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -71,10 +71,10 @@ getAnimalsInProximity(Point2D)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>955</x>
-      <y>345</y>
-      <w>10</w>
-      <h>20</h>
+      <x>1050</x>
+      <y>130</y>
+      <w>20</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -82,10 +82,10 @@ getAnimalsInProximity(Point2D)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>835</x>
-      <y>355</y>
-      <w>130</w>
-      <h>20</h>
+      <x>810</x>
+      <y>150</y>
+      <w>260</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 List&lt;Animal&gt;</panel_attributes>
@@ -94,10 +94,10 @@ List&lt;Animal&gt;</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>835</x>
-      <y>370</y>
-      <w>10</w>
-      <h>20</h>
+      <x>810</x>
+      <y>180</y>
+      <w>20</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -105,10 +105,10 @@ List&lt;Animal&gt;</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>835</x>
-      <y>470</y>
-      <w>10</w>
-      <h>20</h>
+      <x>810</x>
+      <y>410</y>
+      <w>20</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -116,10 +116,10 @@ List&lt;Animal&gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>480</y>
-      <w>90</w>
-      <h>25</h>
+      <x>820</x>
+      <y>430</y>
+      <w>180</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 fightAnimal(Animal)
@@ -129,46 +129,46 @@ fightAnimal(Animal)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>745</x>
-      <y>525</y>
-      <w>120</w>
-      <h>20</h>
+      <x>630</x>
+      <y>490</y>
+      <w>190</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+null</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>460</y>
-      <w>195</w>
-      <h>20</h>
+      <x>480</x>
+      <y>360</y>
+      <w>340</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 moveTo(Point2D)</panel_attributes>
-    <additional_attributes>10.0;20.0;370.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>745</x>
-      <y>340</y>
-      <w>120</w>
-      <h>20</h>
+      <x>630</x>
+      <y>120</y>
+      <w>190</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 update()</panel_attributes>
-    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>600</x>
-      <y>440</y>
-      <w>450</w>
-      <h>190</h>
+      <x>330</x>
+      <y>300</y>
+      <w>900</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>fontsize=10
 distance from prey
@@ -185,10 +185,10 @@ else
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>600</x>
-      <y>360</y>
-      <w>450</w>
-      <h>75</h>
+      <x>330</x>
+      <y>100</y>
+      <w>900</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>fontsize=10
 if targetSelected=null</panel_attributes>
@@ -197,10 +197,10 @@ if targetSelected=null</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>645</x>
-      <y>305</y>
-      <w>50</w>
-      <h>15</h>
+      <x>430</x>
+      <y>50</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>_Predator_</panel_attributes>
     <additional_attributes/>
@@ -208,10 +208,10 @@ if targetSelected=null</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>665</x>
-      <y>315</y>
-      <w>15</w>
-      <h>275</h>
+      <x>470</x>
+      <y>70</y>
+      <w>30</w>
+      <h>550</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;530.0</additional_attributes>
@@ -219,10 +219,10 @@ if targetSelected=null</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>720</x>
-      <y>305</y>
-      <w>50</w>
-      <h>15</h>
+      <x>580</x>
+      <y>50</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>_AiBehaviour_</panel_attributes>
     <additional_attributes/>
@@ -230,10 +230,10 @@ if targetSelected=null</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>665</x>
-      <y>330</y>
-      <w>10</w>
-      <h>230</h>
+      <x>470</x>
+      <y>100</y>
+      <w>20</w>
+      <h>460</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -241,10 +241,10 @@ if targetSelected=null</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>330</y>
-      <w>80</w>
-      <h>20</h>
+      <x>480</x>
+      <y>100</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 update()</panel_attributes>
@@ -253,10 +253,10 @@ update()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>315</y>
-      <w>15</w>
-      <h>270</h>
+      <x>620</x>
+      <y>70</y>
+      <w>30</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;520.0</additional_attributes>
@@ -264,10 +264,10 @@ update()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>740</x>
-      <y>340</y>
-      <w>10</w>
-      <h>210</h>
+      <x>620</x>
+      <y>120</y>
+      <w>20</w>
+      <h>420</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -275,10 +275,10 @@ update()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>535</y>
-      <w>80</w>
-      <h>20</h>
+      <x>480</x>
+      <y>510</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>

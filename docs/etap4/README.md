@@ -18,6 +18,9 @@ Jak można zauważyć stany `Copulate` i `Hunt` mają bardzo podobną stukturę 
 listę innych zwierząt w pobliżu, którą filtrują wg. swoich predykatów. Tak podobną funkcjonalność można by wydzielić do
 oddzielnej klasy.
 
+Zmiana aktualnego stanu bez wpychania nowego stanu na stos będzie realizowana przez zwracanie nowego stanu przez
+`IAiState::update()`.
+
 ## Diagramy aktywności
 
 - Hunt
