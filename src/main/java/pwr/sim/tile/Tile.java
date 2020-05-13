@@ -1,4 +1,4 @@
-package pwr.sim;
+package pwr.sim.tile;
 
 public class Tile {
     public void draw() {

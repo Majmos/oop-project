@@ -1,4 +1,4 @@
-package pwr.sim;
+package pwr.sim.tile;
 
 public class ForestTile extends Tile {
     public void draw() {

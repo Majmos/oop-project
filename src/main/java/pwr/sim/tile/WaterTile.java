@@ -1,4 +1,4 @@
-package pwr.sim;
+package pwr.sim.tile;
 
 public class WaterTile extends Tile {
     public void draw() {

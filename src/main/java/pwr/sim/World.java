@@ -1,6 +1,7 @@
 package pwr.sim;
 
 import pwr.sim.animal.*;
+import pwr.sim.tile.*;
 
 import java.io.*;
 import java.util.ArrayList;
