@@ -24,7 +24,7 @@ public abstract class Animal {
     AiBehaviour aiBehaviour;
 
     public void draw(char c) {
-        System.out.print(String.format("\u001B[%d;%dH\u001B[37m%c\u001B[0m", y, 3*x+1, c));
+        System.out.print(String.format("\u001B[%dB\u001B[%dC\u001B[37m%c\u001B[%dA\u001B[%dD\u001B[0m", y, 3*x+1, c, y, 3*x+1));
     }
 
     private int health;
