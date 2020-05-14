@@ -67,17 +67,16 @@ public class World {
     }
 
     public void draw() {
-        System.out.print("\u001B[s");
         for(int y = 0; y < this.height; y++) {
             for(int x = 0; x < this.width; x++) {
                 this.tiles[y * width + x].draw();
             }
             System.out.println();
         }
+        System.out.print(String.format("\u001B[%dA\u001B[%dD", this.height, this.width));
         for(int i = 0; i < animals.size(); i++){
             animals.get(i).draw('-');
         }
-        System.out.print("\u001B[u");
     }
 
     private Tile[] tiles;
