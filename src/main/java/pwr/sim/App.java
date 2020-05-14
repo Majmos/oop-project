@@ -14,6 +14,6 @@ public class App {
         } catch (Exception e) {
             System.out.println(e);
         }
-        System.out.print("\u001B[51;0H");
+        System.out.print("\u001B[51;50f");
     }
 }
