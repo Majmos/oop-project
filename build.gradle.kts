@@ -49,3 +49,5 @@ application {
     // Define the main class for the application.
     mainClassName = "pwr.sim.App"
 }
+
+tasks.run.get().setStandardInput(System.`in`)
