@@ -1,10 +1,12 @@
 package pwr.sim;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import pwr.sim.renderer.Renderer;
 
 public class App {
     public static void main(String[] args) throws IOException {
+        Renderer.enableAlternateScreenBuffer();
+
         World world;
         try {
             world = new World("assets/map50x50.txt");
@@ -14,6 +16,7 @@ public class App {
         } catch (Exception e) {
             System.out.println(e);
         }
-        System.out.print("\u001B[51;0H");
+        System.in.read();
+        Renderer.disableAlternateScreenBuffer();
     }
 }
