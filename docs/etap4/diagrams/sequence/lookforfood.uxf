@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>11</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>836</x>
-      <y>99</y>
-      <w>33</w>
-      <h>660</h>
+      <x>741</x>
+      <y>143</y>
+      <w>39</w>
+      <h>780</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;580.0</additional_attributes>
@@ -15,21 +15,21 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>759</x>
-      <y>77</y>
-      <w>176</w>
-      <h>33</h>
+      <x>637</x>
+      <y>117</y>
+      <w>351</w>
+      <h>39</h>
     </coordinates>
-    <panel_attributes>_StateLookForFood_</panel_attributes>
+    <panel_attributes>_stateLookForFood: StateLookForFood_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>847</x>
-      <y>253</y>
-      <w>286</w>
-      <h>44</h>
+      <x>754</x>
+      <y>325</y>
+      <w>338</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 getMostGreenTile(Point2D)</panel_attributes>
@@ -38,21 +38,21 @@ getMostGreenTile(Point2D)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1067</x>
-      <y>77</y>
-      <w>110</w>
-      <h>33</h>
+      <x>1014</x>
+      <y>117</y>
+      <w>130</w>
+      <h>39</h>
     </coordinates>
-    <panel_attributes>_World_</panel_attributes>
+    <panel_attributes>_world: World_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1111</x>
-      <y>99</y>
-      <w>33</w>
-      <h>660</h>
+      <x>1066</x>
+      <y>143</y>
+      <w>39</w>
+      <h>780</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;580.0</additional_attributes>
@@ -60,10 +60,10 @@ getMostGreenTile(Point2D)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>836</x>
-      <y>176</y>
-      <w>22</w>
-      <h>473</h>
+      <x>741</x>
+      <y>234</y>
+      <w>26</w>
+      <h>559</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -71,10 +71,10 @@ getMostGreenTile(Point2D)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1111</x>
-      <y>275</y>
-      <w>22</w>
-      <h>44</h>
+      <x>1066</x>
+      <y>351</y>
+      <w>26</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -82,10 +82,10 @@ getMostGreenTile(Point2D)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>847</x>
-      <y>297</y>
-      <w>286</w>
-      <h>44</h>
+      <x>754</x>
+      <y>377</y>
+      <w>338</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Point2D</panel_attributes>
@@ -94,10 +94,10 @@ Point2D</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
-      <y>440</y>
-      <w>429</w>
-      <h>44</h>
+      <x>260</x>
+      <y>546</y>
+      <w>507</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 moveTo(Point2D)</panel_attributes>
@@ -106,22 +106,22 @@ moveTo(Point2D)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>594</x>
-      <y>209</y>
-      <w>264</w>
-      <h>44</h>
+      <x>481</x>
+      <y>273</y>
+      <w>286</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 update()</panel_attributes>
-    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>418</x>
-      <y>99</y>
-      <w>33</w>
-      <h>660</h>
+      <x>247</x>
+      <y>143</y>
+      <w>39</w>
+      <h>780</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;580.0</additional_attributes>
@@ -129,32 +129,32 @@ update()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>374</x>
-      <y>77</y>
-      <w>110</w>
-      <h>33</h>
+      <x>182</x>
+      <y>117</y>
+      <w>156</w>
+      <h>39</h>
     </coordinates>
-    <panel_attributes>_Animal_</panel_attributes>
+    <panel_attributes>_animal: Animal_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>539</x>
-      <y>77</y>
-      <w>110</w>
-      <h>33</h>
+      <x>351</x>
+      <y>117</y>
+      <w>273</w>
+      <h>39</h>
     </coordinates>
-    <panel_attributes>_AiBehaviour_</panel_attributes>
+    <panel_attributes>_aiBehaviour: AiBehaviour_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>418</x>
-      <y>143</y>
-      <w>22</w>
-      <h>572</h>
+      <x>247</x>
+      <y>195</y>
+      <w>26</w>
+      <h>676</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -162,22 +162,22 @@ update()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
-      <y>143</y>
-      <w>176</w>
-      <h>44</h>
+      <x>260</x>
+      <y>195</y>
+      <w>234</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 update()</panel_attributes>
-    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>583</x>
-      <y>99</y>
-      <w>33</w>
-      <h>660</h>
+      <x>468</x>
+      <y>143</y>
+      <w>39</w>
+      <h>780</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;580.0</additional_attributes>
@@ -185,10 +185,10 @@ update()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>583</x>
-      <y>165</y>
-      <w>22</w>
-      <h>528</h>
+      <x>468</x>
+      <y>221</y>
+      <w>26</w>
+      <h>624</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -196,10 +196,10 @@ update()</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>275</x>
-      <y>242</y>
-      <w>946</w>
-      <h>121</h>
+      <x>78</x>
+      <y>312</y>
+      <w>1118</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>fontsize=10
 if targetSelected=null</panel_attributes>
@@ -208,10 +208,10 @@ if targetSelected=null</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>275</x>
-      <y>385</y>
-      <w>946</w>
-      <h>176</h>
+      <x>78</x>
+      <y>481</y>
+      <w>1118</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>fontsize=10
 distance from plant
@@ -228,37 +228,37 @@ else
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>594</x>
-      <y>506</y>
-      <w>264</w>
-      <h>44</h>
+      <x>481</x>
+      <y>624</y>
+      <w>286</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 EatPlantState()</panel_attributes>
-    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
-      <y>660</y>
-      <w>176</w>
-      <h>44</h>
+      <x>260</x>
+      <y>806</y>
+      <w>234</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>594</x>
-      <y>583</y>
-      <w>264</w>
-      <h>44</h>
+      <x>481</x>
+      <y>715</y>
+      <w>286</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 null</panel_attributes>
-    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
 </diagram>
