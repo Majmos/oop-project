@@ -1,22 +1,26 @@
 package pwr.sim;
 
-import java.io.IOException;
 import pwr.sim.renderer.Renderer;
+
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Renderer.enableAlternateScreenBuffer();
+        Scanner scanner = new Scanner(System.in);
 
+        Renderer.enableAlternateScreenBuffer();
         World world;
+
         try {
             world = new World("assets/map50x50.txt");
             world.populate(10);
 
-            while(true) {
+            String input;
+            do {
                 world.draw();
                 world.update();
-                System.in.read();
-            }
+                input = scanner.nextLine();
+            } while(!input.equals("q"));
 
         } catch (Exception e) {
             System.out.println(e);

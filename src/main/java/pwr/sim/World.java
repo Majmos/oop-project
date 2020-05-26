@@ -1,6 +1,7 @@
 package pwr.sim;
 
 import pwr.sim.animal.*;
+import pwr.sim.renderer.Renderer;
 import pwr.sim.tile.*;
 
 import java.io.*;
@@ -67,6 +68,7 @@ public class World {
     }
 
     public void draw() {
+        Renderer.setCursorPosition(0,0);
         for(int y = 0; y < this.height; y++) {
             for(int x = 0; x < this.width; x++) {
                 this.tiles[y * width + x].draw();
@@ -77,6 +79,7 @@ public class World {
         for(int i = 0; i < animals.size(); i++){
             animals.get(i).draw('-');
         }
+        Renderer.setCursorPosition(height + 1, 0);
     }
 
     private Tile[] tiles;
