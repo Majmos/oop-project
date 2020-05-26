@@ -6,8 +6,8 @@ public abstract class Animal {
     private Animal() {}
     public Animal(AiBehaviour aiBehaviour, int y, int x) {
         this.aiBehaviour = aiBehaviour;
-        this.y = y;
-        this.x = x;
+        this.position = new Position2D(x, y);
+        this.aiBehaviour.position = position;
     }
 
     public void update() {
@@ -24,10 +24,9 @@ public abstract class Animal {
     AiBehaviour aiBehaviour;
 
     public void draw(char c) {
-        System.out.print(String.format("\u001B[%dB\u001B[%dC\u001B[37m%c\u001B[%dA\u001B[%dD\u001B[0m", y, 3*x+1, c, y, 3*x+1));
+        System.out.print(String.format("\u001B[%dB\u001B[%dC\u001B[37m%c\u001B[%dA\u001B[%dD\u001B[0m", position.y, 3*position.x+1, c, position.y, 3*position.x+1));
     }
 
     private int health;
-    private int x;
-    private int y;
+    private Position2D position;
 }
