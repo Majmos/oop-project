@@ -1,7 +1,9 @@
 package pwr.sim.tile;
 
+import pwr.sim.renderer.Renderer;
+
 public class DesertTile extends Tile {
     public void draw() {
-        System.out.print("\u001B[48;5;220m   \u001B[0m");
+        Renderer.drawColouredText("   ", 220, 220);
     }
 }

@@ -75,11 +75,10 @@ public class World {
             }
             System.out.println();
         }
-        System.out.print(String.format("\u001B[%dA\u001B[%dD", this.height, this.width));
         for(int i = 0; i < animals.size(); i++){
             animals.get(i).draw('-');
         }
-        Renderer.setCursorPosition(height + 1, 0);
+        Renderer.setCursorPosition(0, height + 1);
     }
 
     private Tile[] tiles;
