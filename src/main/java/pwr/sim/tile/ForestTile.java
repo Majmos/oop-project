@@ -1,7 +1,9 @@
 package pwr.sim.tile;
 
+import pwr.sim.renderer.Renderer;
+
 public class ForestTile extends Tile {
     public void draw() {
-        System.out.print("\u001B[48;5;22m   \u001B[0m");
+        Renderer.drawColouredText("   ", 22, 22);
     }
 }

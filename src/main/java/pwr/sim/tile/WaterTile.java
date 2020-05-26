@@ -1,7 +1,9 @@
 package pwr.sim.tile;
 
+import pwr.sim.renderer.Renderer;
+
 public class WaterTile extends Tile {
     public void draw() {
-        System.out.print("\u001B[48;5;20m   \u001B[0m");
+        Renderer.drawColouredText("   ", 20, 20);
     }
 }
