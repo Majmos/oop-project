@@ -26,3 +26,12 @@ $ ./gradlew run
 ```
 
 ![output](docs/output.png)
+
+## Bugi
+### Ctrl + C nie wychodzi z alternatywnego bufora terminala
+[#32](https://github.com/Bravo555/oop-project/issues/32). Gradle nie przekazuje SIGINT ani innych sygnałów do
+uruchamianych aplikacji. Aby Ctrl + C było poprawnie obsługiwane, uruchomić aplikację bez gradle:
+```shell script
+$ ./gradlew build
+$ java -cp build/classes/java/main/ pwr.sim.App
+```

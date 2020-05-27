@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> Renderer.disableAlternateScreenBuffer()));
+
         Scanner scanner = new Scanner(System.in);
 
         Renderer.enableAlternateScreenBuffer();
@@ -23,8 +25,8 @@ public class App {
             } while(!input.equals("q"));
 
         } catch (Exception e) {
+            Renderer.disableAlternateScreenBuffer();
             System.out.println(e);
         }
-        Renderer.disableAlternateScreenBuffer();
     }
 }
