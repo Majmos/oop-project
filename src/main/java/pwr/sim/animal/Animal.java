@@ -38,7 +38,7 @@ public abstract class Animal {
     }
 
     public Position2D getPosition() {
-        return position;
+        return new Position2D(this.position);
     }
 
     abstract public char getAnimalChar();
