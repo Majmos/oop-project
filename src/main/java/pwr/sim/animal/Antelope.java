@@ -6,7 +6,9 @@ public class Antelope extends Animal {
     public Antelope(int x, int y) {
         super(new AiBehaviourAntelope(), x, y);
     }
-    public void draw() {
 
+    @Override
+    char getAnimalChar() {
+        return 'A';
     }
 }

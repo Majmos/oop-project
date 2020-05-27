@@ -24,10 +24,13 @@ public abstract class Animal {
     // Czy można zrobić to lepiej?
     AiBehaviour aiBehaviour;
 
-    public void draw(char c) {
+    public void draw() {
         Renderer.setCursorToCell(position.x, position.y);
-        Renderer.drawColouredText("-", 231, 16);
+        char c = getAnimalChar();
+        Renderer.drawColouredText(Character.toString(c), 231, 16);
     }
+
+    abstract char getAnimalChar();
 
     private int health;
     private Position2D position;
