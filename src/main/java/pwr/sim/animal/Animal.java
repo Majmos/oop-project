@@ -3,7 +3,6 @@ package pwr.sim.animal;
 import pwr.sim.Position2D;
 import pwr.sim.World;
 import pwr.sim.animal.ai.AiBehaviour;
-import pwr.sim.renderer.Renderer;
 
 public abstract class Animal {
     private Animal() {}

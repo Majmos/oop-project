@@ -1,7 +1,7 @@
 package pwr.sim.renderer;
 
 public class Renderer {
-    static int cellWidth = 3;
+    static final int cellWidth = 3;
 
     public static void setCursorPosition(int x, int y) {
         System.out.print(String.format("\u001B[%d;%dH", y, x));

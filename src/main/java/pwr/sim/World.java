@@ -98,8 +98,8 @@ public class World {
         return tiles[y * width + x];
     }
 
-    private Tile[] tiles;
-    private List<Animal> animals;
-    private int width;
-    private int height;
+    private final Tile[] tiles;
+    private final List<Animal> animals;
+    private final int width;
+    private final int height;
 }
