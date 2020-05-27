@@ -1,5 +1,7 @@
 package pwr.sim.animal;
 
+import pwr.sim.Position2D;
+import pwr.sim.World;
 import pwr.sim.animal.ai.AiBehaviour;
 import pwr.sim.renderer.Renderer;
 
@@ -9,6 +11,13 @@ public abstract class Animal {
         this.aiBehaviour = aiBehaviour;
         this.position = new Position2D(x, y);
         this.aiBehaviour.position = position;
+    }
+
+    public Animal(AiBehaviour aiBehaviour, int x, int y, World world) {
+        this.aiBehaviour = aiBehaviour;
+        this.position = new Position2D(x, y);
+        this.aiBehaviour.position = position;
+        this.world = world;
     }
 
     public void update() {
@@ -25,13 +34,16 @@ public abstract class Animal {
     AiBehaviour aiBehaviour;
 
     public void draw() {
-        Renderer.setCursorToCell(position.x, position.y);
-        char c = getAnimalChar();
-        Renderer.drawColouredText(Character.toString(c), 231, 16);
+        world.drawAnimal(this);
     }
 
-    abstract char getAnimalChar();
+    public Position2D getPosition() {
+        return position;
+    }
 
+    abstract public char getAnimalChar();
+
+    private World world;
     private int health;
     private Position2D position;
 }

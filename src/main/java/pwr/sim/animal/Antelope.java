@@ -8,7 +8,7 @@ public class Antelope extends Animal {
     }
 
     @Override
-    char getAnimalChar() {
+    public char getAnimalChar() {
         return 'A';
     }
 }

@@ -9,7 +9,7 @@ public class Hippo extends Animal {
     }
 
     @Override
-    char getAnimalChar() {
+    public char getAnimalChar() {
         return 'H';
     }
 }

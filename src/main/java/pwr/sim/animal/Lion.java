@@ -8,7 +8,7 @@ public class Lion extends Animal {
     }
 
     @Override
-    char getAnimalChar() {
+    public char getAnimalChar() {
         return 'L';
     }
 }

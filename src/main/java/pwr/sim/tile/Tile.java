@@ -1,7 +1,9 @@
 package pwr.sim.tile;
 
-public class Tile {
+public abstract class Tile {
     public void draw() {
         System.out.print('-');
     }
+
+    public abstract int getColor();
 }

@@ -8,7 +8,7 @@ public class Crocodile extends Animal {
     }
 
     @Override
-    char getAnimalChar() {
+    public char getAnimalChar() {
         return 'C';
     }
 }

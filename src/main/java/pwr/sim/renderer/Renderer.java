@@ -8,14 +8,15 @@ public class Renderer {
     }
 
     public static void setCursorToCell(int x, int y) {
-        setCursorPosition(x * cellWidth + 1, y);
+        setCursorPosition(x * cellWidth + 2, y+1);
     }
 
     public static void drawColouredText(String text, int fgColour, int bgColour) {
         System.out.print(String.format("\u001B[38;5;%dm\u001B[48;5;%dm%s\u001B[0m", fgColour, bgColour, text));
     }
-    public static void drawColouredText(String text) {
-        drawColouredText(text, -1, -1);
+
+    public static void drawColouredChar(char c, int fgColour, int bgColour) {
+        System.out.print(String.format("\u001B[38;5;%dm\u001B[48;5;%dm%c\u001B[0m", fgColour, bgColour, c));
     }
 
     public static void enableAlternateScreenBuffer() {

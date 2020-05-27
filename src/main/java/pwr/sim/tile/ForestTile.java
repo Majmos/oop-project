@@ -6,4 +6,9 @@ public class ForestTile extends Tile {
     public void draw() {
         Renderer.drawColouredText("   ", 22, 22);
     }
+
+    @Override
+    public int getColor() {
+        return 22;
+    }
 }

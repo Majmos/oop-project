@@ -63,13 +63,13 @@ public class World {
     public void populate(int numAnimals) {
         Random pos = new Random();
         for(int i = 0; i < numAnimals; i += 2) {
-            this.animals.add(new Wolf(pos.nextInt(50), pos.nextInt(50)));
-            this.animals.add(new Antelope(pos.nextInt(50), pos.nextInt(50)));
+            this.animals.add(new Wolf(pos.nextInt(50), pos.nextInt(50), this));
+            //this.animals.add(new Antelope(pos.nextInt(50), pos.nextInt(50)));
         }
     }
 
     public void draw() {
-        Renderer.setCursorPosition(0,0);
+        Renderer.setCursorPosition(1,1);
         for(int y = 0; y < this.height; y++) {
             for(int x = 0; x < this.width; x++) {
                 this.tiles[y * width + x].draw();
@@ -80,6 +80,22 @@ public class World {
             animal.draw();
         }
         Renderer.setCursorPosition(0, height + 1);
+    }
+
+    public void drawAnimal(Animal animal) {
+        Position2D position = animal.getPosition();
+
+        Renderer.setCursorToCell(position.x, position.y);
+        char c = animal.getAnimalChar();
+
+        // handle tile background
+        int tileBackground = tiles[position.y * width + position.x].getColor();
+
+        Renderer.drawColouredChar(c, 231, tileBackground);
+    }
+
+    public Tile getTile(int x, int y) {
+        return tiles[y * width + x];
     }
 
     private Tile[] tiles;

@@ -1,6 +1,6 @@
 package pwr.sim.animal.ai;
 
-import pwr.sim.animal.Position2D;
+import pwr.sim.Position2D;
 import pwr.sim.animal.ai.state.IAiState;
 
 public abstract class AiBehaviour {
