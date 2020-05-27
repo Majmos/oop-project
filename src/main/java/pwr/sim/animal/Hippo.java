@@ -7,4 +7,9 @@ public class Hippo extends Animal {
     public Hippo(int x, int y) {
         super(new AiBehaviourHippo(), x, y);
     }
+
+    @Override
+    char getAnimalChar() {
+        return 'H';
+    }
 }

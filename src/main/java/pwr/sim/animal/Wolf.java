@@ -6,7 +6,9 @@ public class Wolf extends Animal {
     public Wolf(int x, int y) {
         super(new AiBehaviourWolf(), x, y);
     }
-    public void draw() {
-        super.draw('W');
+
+    @Override
+    char getAnimalChar() {
+        return 'W';
     }
 }

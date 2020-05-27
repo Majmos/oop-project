@@ -62,8 +62,9 @@ public class World {
     // TODO: to properly configure how many animals of each species should be generated, we should use factory pattern
     public void populate(int numAnimals) {
         Random pos = new Random();
-        for(int i = 0; i < numAnimals; i++) {
+        for(int i = 0; i < numAnimals; i += 2) {
             this.animals.add(new Wolf(pos.nextInt(50), pos.nextInt(50)));
+            this.animals.add(new Antelope(pos.nextInt(50), pos.nextInt(50)));
         }
     }
 
@@ -75,8 +76,8 @@ public class World {
             }
             System.out.println();
         }
-        for(int i = 0; i < animals.size(); i++){
-            animals.get(i).draw('-');
+        for(Animal animal: this.animals){
+            animal.draw();
         }
         Renderer.setCursorPosition(0, height + 1);
     }
