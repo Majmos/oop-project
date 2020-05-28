@@ -22,7 +22,7 @@ public class App {
                 world.draw();
                 world.update();
                 input = scanner.nextLine();
-            } while(!input.equals("q"));
+            } while(!input.equalsIgnoreCase("q"));
 
         } catch (Exception e) {
             Renderer.disableAlternateScreenBuffer();
