@@ -1,11 +1,12 @@
 package pwr.sim.animal;
 
+import pwr.sim.Position2D;
 import pwr.sim.World;
-import pwr.sim.animal.ai.AiBehaviourWolf;
+import pwr.sim.animal.ai.AiBehaviour;
 
 public class Wolf extends Animal {
-    public Wolf(int x, int y, World world) {
-        super(new AiBehaviourWolf(), x, y, world);
+    public Wolf(Position2D position, World world) {
+        super(new AiBehaviour(position), position, world);
     }
 
     @Override

@@ -6,16 +6,16 @@ import pwr.sim.animal.ai.AiBehaviour;
 
 public abstract class Animal {
     private Animal() {}
-    public Animal(AiBehaviour aiBehaviour, int x, int y) {
+    public Animal(AiBehaviour aiBehaviour, Position2D position) {
         this.aiBehaviour = aiBehaviour;
-        this.position = new Position2D(x, y);
+        this.position = position;
         this.aiBehaviour.position = position;
     }
 
-    public Animal(AiBehaviour aiBehaviour, int x, int y, World world) {
+    public Animal(AiBehaviour aiBehaviour, Position2D position, World world) {
         this.aiBehaviour = aiBehaviour;
-        this.position = new Position2D(x, y);
-        this.aiBehaviour.position = position;
+        this.position = position;
+        this.aiBehaviour.position = this.position;
         this.world = world;
     }
 
@@ -30,7 +30,7 @@ public abstract class Animal {
     // Aby uniemożliwić skonstruowanie niezainicjalizowanego w pełni obiektu, domyślny konstruktor ustawiony został jako
     // prywatny.
     // Czy można zrobić to lepiej?
-    AiBehaviour aiBehaviour;
+    private AiBehaviour aiBehaviour;
 
     public void draw() {
         world.drawAnimal(this);

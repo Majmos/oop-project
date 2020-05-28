@@ -1,10 +1,11 @@
 package pwr.sim.animal;
 
+import pwr.sim.Position2D;
 import pwr.sim.animal.ai.AiBehaviourCrocodile;
 
 public class Crocodile extends Animal {
-    public Crocodile(int x, int y) {
-        super(new AiBehaviourCrocodile(), x, y);
+    public Crocodile(Position2D position) {
+        super(new AiBehaviourCrocodile(), position);
     }
 
     @Override

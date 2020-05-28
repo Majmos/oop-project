@@ -63,7 +63,7 @@ public class World {
     public void populate(int numAnimals) {
         Random pos = new Random();
         for(int i = 0; i < numAnimals; i += 2) {
-            this.animals.add(new Wolf(pos.nextInt(50), pos.nextInt(50), this));
+            this.animals.add(new Wolf(new Position2D(pos.nextInt(50), pos.nextInt(50)), this));
             //this.animals.add(new Antelope(pos.nextInt(50), pos.nextInt(50)));
         }
     }
