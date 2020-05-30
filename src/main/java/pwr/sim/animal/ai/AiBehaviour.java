@@ -1,6 +1,6 @@
 package pwr.sim.animal.ai;
 
-import pwr.sim.Position2D;
+import pwr.sim.animal.Animal;
 import pwr.sim.animal.ai.state.AiStatePop;
 import pwr.sim.animal.ai.state.AiStateRoam;
 import pwr.sim.animal.ai.state.IAiState;
@@ -11,9 +11,10 @@ public class AiBehaviour {
     public AiBehaviour() {
         currentState = new Stack<>();
     }
-    public AiBehaviour(Position2D position) {
+    public AiBehaviour(Animal animal) {
+        this.animal = animal;
         currentState = new Stack<>();
-        currentState.push(new AiStateRoam(position));
+        currentState.push(new AiStateRoam(this));
     }
 
     public void update() {
@@ -27,6 +28,6 @@ public class AiBehaviour {
         }
     }
 
-    protected Stack<IAiState> currentState;
-    public Position2D position;
+    protected final Stack<IAiState> currentState;
+    public Animal animal;
 }
