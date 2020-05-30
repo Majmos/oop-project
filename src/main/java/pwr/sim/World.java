@@ -3,7 +3,6 @@ package pwr.sim;
 import pwr.sim.animal.*;
 import pwr.sim.renderer.Renderer;
 import pwr.sim.tile.*;
-import pwr.sim.animal.AnimalFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -107,7 +106,7 @@ public class World {
         return getTile(x, y);
     }
 
-    private AnimalFactory animalFactory;
+    private final AnimalFactory animalFactory;
     private final Tile[] tiles;
     private final List<Animal> animals;
     private final int width;

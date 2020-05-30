@@ -1,6 +1,5 @@
 package pwr.sim.animal.ai.state;
 
-import pwr.sim.Position2D;
 import pwr.sim.animal.ai.AiBehaviour;
 
 public class AiStateRoam implements IAiState {
@@ -32,5 +31,5 @@ public class AiStateRoam implements IAiState {
 
     private int phase = 0;
     private int numTicks = 0;
-    private AiBehaviour aiBehaviour;
+    private final AiBehaviour aiBehaviour;
 }

@@ -13,27 +13,28 @@ public class AnimalFactory {
         Animal animal;
         switch (animalType) {
             case ANTELOPE:
-                animal = new Antelope(position);
+                animal = new Antelope();
                 break;
             case CROCODILE:
-                animal = new Crocodile(position);
+                animal = new Crocodile();
                 break;
             case HIPPO:
-                animal = new Hippo(position);
+                animal = new Hippo();
                 break;
             case LION:
-                animal = new Lion(position);
+                animal = new Lion();
                 break;
             case WOLF:
-                animal = new Wolf(position, world);
+                animal = new Wolf();
                 break;
             default:
                 return null;
         }
+        animal.setWorld(this.world);
+        animal.setPosition(position);
         animal.setAiBehaviour(new AiBehaviour(animal));
         return animal;
     }
 
-    private World world;
+    private final World world;
 }
-

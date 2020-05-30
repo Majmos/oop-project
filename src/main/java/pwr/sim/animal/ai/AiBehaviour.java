@@ -1,6 +1,5 @@
 package pwr.sim.animal.ai;
 
-import pwr.sim.Position2D;
 import pwr.sim.animal.Animal;
 import pwr.sim.animal.ai.state.AiStatePop;
 import pwr.sim.animal.ai.state.AiStateRoam;
@@ -29,6 +28,6 @@ public class AiBehaviour {
         }
     }
 
-    protected Stack<IAiState> currentState;
+    protected final Stack<IAiState> currentState;
     public Animal animal;
 }
