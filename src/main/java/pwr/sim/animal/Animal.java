@@ -6,16 +6,12 @@ import pwr.sim.animal.ai.AiBehaviour;
 
 public abstract class Animal {
     private Animal() {}
-    public Animal(AiBehaviour aiBehaviour, Position2D position) {
-        this.aiBehaviour = aiBehaviour;
+    public Animal(Position2D position) {
         this.position = position;
-        this.aiBehaviour.position = position;
     }
 
-    public Animal(AiBehaviour aiBehaviour, Position2D position, World world) {
-        this.aiBehaviour = aiBehaviour;
+    public Animal(Position2D position, World world) {
         this.position = position;
-        this.aiBehaviour.position = this.position;
         this.world = world;
     }
 
@@ -32,6 +28,10 @@ public abstract class Animal {
     // Czy można zrobić to lepiej?
     private AiBehaviour aiBehaviour;
 
+    public void setAiBehaviour(AiBehaviour aiBehaviour) {
+        this.aiBehaviour = aiBehaviour;
+    }
+
     public void draw() {
         world.drawAnimal(this);
     }
@@ -44,5 +44,5 @@ public abstract class Animal {
 
     private World world;
     private int health;
-    private Position2D position;
+    public Position2D position;
 }

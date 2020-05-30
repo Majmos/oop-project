@@ -6,7 +6,7 @@ import pwr.sim.animal.ai.AiBehaviour;
 
 public class Wolf extends Animal {
     public Wolf(Position2D position, World world) {
-        super(new AiBehaviour(position), position, world);
+        super(position, world);
     }
 
     @Override

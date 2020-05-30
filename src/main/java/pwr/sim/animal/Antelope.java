@@ -5,7 +5,7 @@ import pwr.sim.animal.ai.AiBehaviourAntelope;
 
 public class Antelope extends Animal {
     public Antelope(Position2D position) {
-        super(new AiBehaviourAntelope(), position);
+        super(position);
     }
 
     @Override

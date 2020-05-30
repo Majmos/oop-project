@@ -3,6 +3,7 @@ package pwr.sim;
 import pwr.sim.animal.*;
 import pwr.sim.renderer.Renderer;
 import pwr.sim.tile.*;
+import pwr.sim.animal.AnimalFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,9 +16,10 @@ public class World {
         this.height = height;
         this.tiles = tiles;
         this.animals = new ArrayList<>();
+        this.animalFactory = new AnimalFactory(this);
     }
 
-    public World(String filename) throws Exception {
+    public static World loadFromFile(String filename) throws Exception {
         ArrayList<Tile> tileList = new ArrayList<>();
 
         BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -46,11 +48,9 @@ public class World {
 
         int height = y;
         Tile[] tiles = new Tile[width * height];
+        tileList.toArray(tiles);
 
-        this.width = width;
-        this.height = height;
-        this.tiles = tileList.toArray(tiles);
-        this.animals = new ArrayList<>();
+        return new World(width, height, tiles);
     }
 
     public void update() {
@@ -63,8 +63,8 @@ public class World {
     public void populate(int numAnimals) {
         Random pos = new Random();
         for(int i = 0; i < numAnimals; i += 2) {
-            this.animals.add(new Wolf(new Position2D(pos.nextInt(50), pos.nextInt(50), this), this));
-            //this.animals.add(new Antelope(pos.nextInt(50), pos.nextInt(50)));
+            Position2D position = new Position2D(pos.nextInt(50), pos.nextInt(50), this);
+            this.animals.add(this.animalFactory.createAnimal(AnimalType.WOLF, position));
         }
     }
 
@@ -72,7 +72,7 @@ public class World {
         Renderer.setCursorPosition(1,1);
         for(int y = 0; y < this.height; y++) {
             for(int x = 0; x < this.width; x++) {
-                this.tiles[y * width + x].draw();
+                getTile(x, y).draw();
             }
             System.out.println();
         }
@@ -107,6 +107,7 @@ public class World {
         return getTile(x, y);
     }
 
+    private AnimalFactory animalFactory;
     private final Tile[] tiles;
     private final List<Animal> animals;
     private final int width;

@@ -6,7 +6,7 @@ import pwr.sim.animal.ai.AiBehaviourHippo;
 public class Hippo extends Animal {
 
     public Hippo(Position2D position) {
-        super(new AiBehaviourHippo(), position);
+        super(position);
     }
 
     @Override
