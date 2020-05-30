@@ -20,8 +20,8 @@ public class App {
             String input;
             do {
                 world.draw();
-                world.update();
                 input = scanner.nextLine();
+                world.update();
             } while(!input.equalsIgnoreCase("q"));
 
         } catch (Exception e) {

@@ -1,5 +1,7 @@
 package pwr.sim.renderer;
 
+import pwr.sim.Position2D;
+
 public class Renderer {
     static final int cellWidth = 3;
 
@@ -7,8 +9,8 @@ public class Renderer {
         System.out.print(String.format("\u001B[%d;%dH", y, x));
     }
 
-    public static void setCursorToCell(int x, int y) {
-        setCursorPosition(x * cellWidth + 2, y+1);
+    public static void setCursorToCell(Position2D position) {
+        setCursorPosition(position.getX() * cellWidth + 2, position.getY() + 1);
     }
 
     public static void drawColouredText(String text, int fgColour, int bgColour) {
