@@ -14,12 +14,13 @@ public class AiBehaviour {
     public AiBehaviour(Animal animal) {
         this.animal = animal;
         currentState = new Stack<>();
-        currentState.push(new AiStateRoam(this));
+        currentState.push(new AiStateRoam(this.animal.position));
     }
 
     public void update() {
         IAiState newState = currentState.peek().update();
         if(newState != null) {
+            // TODO this is bad. we should fix this
             if(newState instanceof AiStatePop) {
                 currentState.pop();
                 return;
