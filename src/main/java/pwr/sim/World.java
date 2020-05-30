@@ -58,13 +58,17 @@ public class World {
         }
     }
 
-    // TODO: to properly configure how many animals of each species should be generated, we should use factory pattern
     public void populate(int numAnimals) {
         Random pos = new Random();
+        AnimalType[] animalTypes = AnimalType.values();
         for(int i = 0; i < numAnimals; i += 2) {
             Position2D position = new Position2D(pos.nextInt(50), pos.nextInt(50), this);
-            this.animals.add(this.animalFactory.createAnimal(AnimalType.WOLF, position));
+            spawnAnimal(animalTypes[i % animalTypes.length], position);
         }
+    }
+
+    private void spawnAnimal(AnimalType animalType, Position2D position) {
+        this.animals.add(this.animalFactory.createAnimal(animalType, position));
     }
 
     public void draw() {
