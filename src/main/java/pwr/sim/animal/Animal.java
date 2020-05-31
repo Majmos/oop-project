@@ -77,8 +77,8 @@ public abstract class Animal {
         return this.health;
     }
 
-    public void changeHealth() {
-
+    public void changeHealth(int shift) {
+        this.health += shift;
     }
 
     private AiBehaviour aiBehaviour;
