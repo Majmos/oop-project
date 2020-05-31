@@ -55,7 +55,7 @@ public abstract class Animal {
 
 
     private AiBehaviour aiBehaviour;
-    private World world;
+    protected World world;
     private int health;
     public Position2D position;
 }
