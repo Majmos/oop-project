@@ -5,6 +5,7 @@ import pwr.sim.animal.Animal;
 
 public class AiStateRoam implements IAiState {
     public AiStateRoam(Animal animal) {
+        this.animal = animal;
         this.position = animal.getPosition();
     }
 
@@ -12,7 +13,7 @@ public class AiStateRoam implements IAiState {
     public IAiState update() {
         if(numTicks >= 6) {
             numTicks = 0;
-            return new AiStateSleep();
+            return new AiStateSleep(animal);
         }
 
         if(phase == 0) {
@@ -33,4 +34,5 @@ public class AiStateRoam implements IAiState {
     private int phase = 0;
     private int numTicks = 0;
     private final Position2D position;
+    private final Animal animal;
 }

@@ -31,9 +31,17 @@ public abstract class Animal {
 
     abstract public char getAnimalChar();
 
+    public int getEnergy() {
+        return this.energy;
+    }
+
+    public void changeEnergy(int shift) {
+        this.energy += shift;
+    }
 
     private AiBehaviour aiBehaviour;
     private World world;
     private int health;
     private Position2D position;
+    private int energy = 80;
 }
