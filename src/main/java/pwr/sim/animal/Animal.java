@@ -43,9 +43,18 @@ public abstract class Animal {
         this.energy += shift;
     }
 
+    public int getHunger() {
+        return this.hunger;
+    }
+
+    public void changeHunger(int shift) {
+        this.hunger += shift;
+    }
+
     private AiBehaviour aiBehaviour;
     private World world;
     private int health;
     private Position2D position;
     private int energy = 80;
+    private int hunger;
 }

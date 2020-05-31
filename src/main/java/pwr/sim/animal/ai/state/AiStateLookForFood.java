@@ -15,7 +15,7 @@ public class AiStateLookForFood implements IAiState {
     @Override
     public IAiState update() {
         if(world.getTile(position) instanceof ForestTile) {
-            return new AiStateEatPlant();
+            return new AiStateEatPlant(animal);
         } else {
             if(!hasDestination) {
                 for (int y = position.getY() - 5; y < position.getY() + 5; y++) {
