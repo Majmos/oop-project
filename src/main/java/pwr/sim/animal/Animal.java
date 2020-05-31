@@ -89,5 +89,5 @@ public abstract class Animal {
     private int health;
     protected Position2D position;
     private int energy = 80;
-    private int hunger;
+    private int hunger = 80;
 }

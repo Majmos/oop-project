@@ -23,6 +23,6 @@ public abstract class Tile {
         this.flesh += shift;
     }
 
-    private int flora;
+    private int flora = 20;
     private int flesh;
 }
