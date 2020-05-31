@@ -53,6 +53,7 @@ public class AiStateHunt implements IAiState {
         if(minX == 0 && minY == 0) {
             prey.changeHealth(-100);
             prey = null;
+            return new AiStateEatCorpse(animal);
         }
         return null;
     }
