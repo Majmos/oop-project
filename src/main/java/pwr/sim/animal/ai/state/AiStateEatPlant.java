@@ -12,13 +12,11 @@ public class AiStateEatPlant implements IAiState {
     }
     @Override
     public IAiState update() {
-        if(flora >= 5 && hunger < 100) {
-            tile.changeFlora(-5);
-            animal.changeHunger(5);
-            return null;
-        } else {
-            //what should be returned when animal is not hungry or there is no more flora in this tile
+        if(flora < 5 || hunger == 100) {
+            return new AiStatePop();
         }
+        tile.changeFlora(-5);
+        animal.changeHunger(5);
         return null;
     }
 
