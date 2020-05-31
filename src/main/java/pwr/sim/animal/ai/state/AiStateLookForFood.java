@@ -2,9 +2,15 @@ package pwr.sim.animal.ai.state;
 
 import pwr.sim.Position2D;
 import pwr.sim.World;
+import pwr.sim.animal.Animal;
 import pwr.sim.tile.ForestTile;
 
 public class AiStateLookForFood implements IAiState {
+    public AiStateLookForFood(Animal animal) {
+        this.position = animal.getPosition();
+        this.world = animal.getWorld();
+        this.animal = animal;
+    }
 
     @Override
     public IAiState update() {
@@ -48,6 +54,7 @@ public class AiStateLookForFood implements IAiState {
     }
     private World world;
     private Position2D position;
+    private Animal animal;
     private int distanceX = 0;
     private int distanceY = 0;
     private int minimum = 100000;

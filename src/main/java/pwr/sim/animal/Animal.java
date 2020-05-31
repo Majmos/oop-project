@@ -25,6 +25,10 @@ public abstract class Animal {
         this.position = new Position2D(position);
     }
 
+    public World getWorld() {
+        return this.world;
+    }
+
     public void setWorld(World world) {
         this.world = world;
     }
