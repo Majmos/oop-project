@@ -37,7 +37,7 @@ public abstract class Animal {
     }
 
     public Position2D getPosition() {
-        return new Position2D(this.position);
+        return this.position;
     }
 
     public void setPosition(Position2D position) throws Exception {
@@ -47,15 +47,44 @@ public abstract class Animal {
         this.position = new Position2D(position);
     }
 
+    public World getWorld() {
+        return this.world;
+    }
+
     public void setWorld(World world) {
         this.world = world;
     }
 
     abstract public char getAnimalChar();
 
+    public int getEnergy() {
+        return this.energy;
+    }
+
+    public void changeEnergy(int shift) {
+        this.energy += shift;
+    }
+
+    public int getHunger() {
+        return this.hunger;
+    }
+
+    public void changeHunger(int shift) {
+        this.hunger += shift;
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void changeHealth(int shift) {
+        this.health += shift;
+    }
 
     private AiBehaviour aiBehaviour;
     protected World world;
     private int health;
-    public Position2D position;
+    protected Position2D position;
+    private int energy = 80;
+    private int hunger;
 }

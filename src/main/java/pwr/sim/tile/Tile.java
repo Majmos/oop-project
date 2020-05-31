@@ -6,4 +6,14 @@ public abstract class Tile {
     }
 
     public abstract int getColor();
+
+    public int getFlora() {
+        return this.flora;
+    }
+
+    public void changeFlora(int shift) {
+        this.flora += shift;
+    }
+
+    private int flora;
 }

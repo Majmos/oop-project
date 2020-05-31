@@ -111,7 +111,7 @@ public class World {
     }
 
     public Tile getTile(int x, int y) {
-        if(x >= width || y >= height) {
+        if(x >= width || x < 0 || y >= height || y < 0) {
             return null;
         }
         return tiles[y * width + x];
