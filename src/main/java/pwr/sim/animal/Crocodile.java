@@ -5,4 +5,10 @@ public class Crocodile extends Animal {
     public char getAnimalChar() {
         return 'C';
     }
+
+    @Override
+    public void move(int x, int y) {
+        // crocodiles can move over water, no need to check for tile type
+        super.position.move(x, y);
+    }
 }
