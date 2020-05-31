@@ -31,7 +31,12 @@ public class AnimalFactory {
                 return null;
         }
         animal.setWorld(this.world);
-        animal.setPosition(position);
+        try {
+            animal.setPosition(position);
+        } catch (Exception e) {
+            return null;
+        }
+
         animal.setAiBehaviour(new AiBehaviour(animal));
         return animal;
     }
