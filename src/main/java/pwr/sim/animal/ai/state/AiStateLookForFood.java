@@ -53,6 +53,7 @@ public class AiStateLookForFood implements IAiState {
         if(minX == 0 && minY == 0) hasDestination = false;
         return null;
     }
+
     private World world;
     private Position2D position;
     private Animal animal;

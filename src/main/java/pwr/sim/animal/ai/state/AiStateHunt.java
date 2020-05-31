@@ -23,7 +23,7 @@ public class AiStateHunt implements IAiState {
         }
         if(prey == null) {
             for (Animal prey: animals) {
-                if (animal instanceof Antelope || animal instanceof Hippo) {
+                if (prey instanceof Antelope || prey instanceof Hippo) {
                     preyPosition = prey.getPosition();
                     distanceX = preyPosition.getX() - position.getX();
                     distanceY = preyPosition.getY() - position.getY();
@@ -57,6 +57,7 @@ public class AiStateHunt implements IAiState {
         }
         return null;
     }
+
     private List<Animal> animals;
     private Animal animal;
     private World world;
