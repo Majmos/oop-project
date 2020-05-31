@@ -23,7 +23,7 @@ public class AiStateRoam implements IAiState {
 
         if(numTicks >= 6) {
             numTicks = 0;
-            return new AiStateSleep();
+            return new AiStateSleep(animal);
         }
 
         return null;
