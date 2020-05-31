@@ -9,11 +9,6 @@ public class AiStateRoam implements IAiState {
 
     @Override
     public IAiState update() {
-        if(numTicks >= 6) {
-            numTicks = 0;
-            return new AiStateSleep();
-        }
-
         if(phase == 0) {
             position.move(1, 0);
         } else if(phase == 1) {
@@ -23,9 +18,14 @@ public class AiStateRoam implements IAiState {
         } else if(phase == 3) {
             position.move(0, -1);
         }
-
         phase = (phase + 1)%4;
         numTicks++;
+
+        if(numTicks >= 6) {
+            numTicks = 0;
+            return new AiStateSleep();
+        }
+
         return null;
     }
 
