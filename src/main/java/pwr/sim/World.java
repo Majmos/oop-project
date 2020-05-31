@@ -62,13 +62,26 @@ public class World {
         Random pos = new Random();
         AnimalType[] animalTypes = AnimalType.values();
         for(int i = 0; i < numAnimals; i += 2) {
-            Position2D position = new Position2D(pos.nextInt(50), pos.nextInt(50), this);
-            spawnAnimal(animalTypes[i % animalTypes.length], position);
+            spawnAnimal(animalTypes[i % animalTypes.length]);
         }
     }
 
-    private void spawnAnimal(AnimalType animalType, Position2D position) {
-        this.animals.add(this.animalFactory.createAnimal(animalType, position));
+    private void spawnAnimal(AnimalType animalType) {
+        Random rng = new Random();
+        Animal animal = null;
+
+        while(animal == null) {
+            Position2D pos = newPosition(rng.nextInt(50), rng.nextInt(50));
+            animal = spawnAnimal(animalType, pos);
+        }
+    }
+    private Animal spawnAnimal(AnimalType animalType, Position2D position) {
+        Animal animal = this.animalFactory.createAnimal(animalType, position);
+        if(animal == null) {
+            return null;
+        }
+        this.animals.add(animal);
+        return animal;
     }
 
     public void draw() {
@@ -108,6 +121,10 @@ public class World {
         int x = position.getX();
         int y = position.getY();
         return getTile(x, y);
+    }
+
+    private Position2D newPosition(int x, int y) {
+        return new Position2D(x, y, this);
     }
 
     private final AnimalFactory animalFactory;

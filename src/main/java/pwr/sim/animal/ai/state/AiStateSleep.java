@@ -9,10 +9,10 @@ public class AiStateSleep implements IAiState {
 
     @Override
     public IAiState update() {
+        animal.changeEnergy(5);
         if(animal.getEnergy() > 90) {
             return new AiStatePop();
         }
-        animal.changeEnergy(5);
         return null;
     }
 
