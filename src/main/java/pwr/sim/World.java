@@ -123,6 +123,10 @@ public class World {
         return getTile(x, y);
     }
 
+    public List<Animal> getAnimals() {
+        return this.animals;
+    }
+
     private Position2D newPosition(int x, int y) {
         return new Position2D(x, y, this);
     }
