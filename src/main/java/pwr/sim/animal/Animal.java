@@ -19,8 +19,8 @@ public abstract class Animal {
     // 2. move to this tile if tile != null AND is not a water tile without the second lookup
     // TODO make move method not check if tile is valid twice
     public void move(int x, int y) {
-        int newx = this.position.getX();
-        int newy = this.position.getY();
+        int newx = this.position.getX() + x;
+        int newy = this.position.getY() + y;
         Tile tile = this.world.getTile(newx, newy);
         if(tile instanceof WaterTile) {
             return;
@@ -40,7 +40,10 @@ public abstract class Animal {
         return new Position2D(this.position);
     }
 
-    public void setPosition(Position2D position) {
+    public void setPosition(Position2D position) throws Exception {
+        if(this.world.getTile(position) instanceof WaterTile) {
+            throw new Exception("Can't place " + this.getClass().toString() + " on water");
+        }
         this.position = new Position2D(position);
     }
 
