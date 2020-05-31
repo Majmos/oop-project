@@ -14,7 +14,7 @@ public class AiBehaviour {
     public AiBehaviour(Animal animal) {
         this.animal = animal;
         currentState = new Stack<>();
-        currentState.push(new AiStateRoam(this.animal.position));
+        currentState.push(new AiStateRoam(this.animal));
     }
 
     public void update() {

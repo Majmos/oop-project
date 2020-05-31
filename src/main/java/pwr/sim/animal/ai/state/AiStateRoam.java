@@ -1,10 +1,11 @@
 package pwr.sim.animal.ai.state;
 
 import pwr.sim.Position2D;
+import pwr.sim.animal.Animal;
 
 public class AiStateRoam implements IAiState {
-    public AiStateRoam(Position2D position) {
-        this.position = position;
+    public AiStateRoam(Animal animal) {
+        this.position = animal.getPosition();
     }
 
     @Override

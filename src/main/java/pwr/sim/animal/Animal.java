@@ -18,7 +18,7 @@ public abstract class Animal {
     }
 
     public Position2D getPosition() {
-        return new Position2D(this.position);
+        return this.position;
     }
 
     public void setPosition(Position2D position) {
@@ -35,5 +35,5 @@ public abstract class Animal {
     private AiBehaviour aiBehaviour;
     private World world;
     private int health;
-    public Position2D position;
+    private Position2D position;
 }
