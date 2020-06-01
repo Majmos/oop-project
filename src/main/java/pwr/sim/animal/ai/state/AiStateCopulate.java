@@ -3,8 +3,6 @@ package pwr.sim.animal.ai.state;
 import pwr.sim.Position2D;
 import pwr.sim.World;
 import pwr.sim.animal.Animal;
-import pwr.sim.animal.Antelope;
-import pwr.sim.animal.Hippo;
 
 import java.util.List;
 
@@ -48,8 +46,8 @@ public class AiStateCopulate implements IAiState {
             minY--;
         }
         if(minX == 0 && minY == 0) {
+            world.breed(this.animal);
             mate = null;
-            //Spawn new animal
         }
         return null;
     }

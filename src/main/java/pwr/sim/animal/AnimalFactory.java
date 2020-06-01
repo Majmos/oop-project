@@ -36,10 +36,32 @@ public class AnimalFactory {
         } catch (Exception e) {
             return null;
         }
-
         animal.setAiBehaviour(new AiBehaviour(animal));
+
         return animal;
     }
+
+    public Animal createAnimal(Animal animal, Position2D position) {
+        try {
+            Animal other = animal.getClass().getConstructor().newInstance();
+
+            other.setWorld(this.world);
+            try {
+                other.setPosition(position);
+            } catch (Exception e) {
+                return null;
+            }
+            other.setAiBehaviour(new AiBehaviour(other));
+            return other;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
 
     private final World world;
 }

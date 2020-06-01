@@ -59,9 +59,8 @@ public class World {
     }
 
     public void populate(int numAnimals) {
-        Random pos = new Random();
         AnimalType[] animalTypes = AnimalType.values();
-        for(int i = 0; i < numAnimals; i += 2) {
+        for(int i = 0; i < numAnimals; i++) {
             spawnAnimal(animalTypes[i % animalTypes.length]);
         }
     }
@@ -84,6 +83,11 @@ public class World {
         return animal;
     }
 
+    private void spawnAnimal(Animal animal, Position2D position) {
+        Animal other = this.animalFactory.createAnimal(animal, position);
+        this.animals.add(other);
+    }
+
     public void draw() {
         Renderer.setCursorPosition(1,1);
         for(int y = 0; y < this.height; y++) {
@@ -92,7 +96,7 @@ public class World {
             }
             System.out.println();
         }
-        for(Animal animal: this.animals){
+        for(Animal animal: this.animals) {
             animal.draw();
         }
         Renderer.setCursorPosition(0, height + 1);
@@ -121,6 +125,11 @@ public class World {
         int x = position.getX();
         int y = position.getY();
         return getTile(x, y);
+    }
+
+    public void breed(Animal animal) {
+        Position2D pos = new Position2D(animal.getPosition());
+        spawnAnimal(animal, pos);
     }
 
     public List<Animal> getAnimals() {

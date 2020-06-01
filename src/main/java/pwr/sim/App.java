@@ -15,7 +15,7 @@ public class App {
 
         try {
             world = World.loadFromFile("assets/map50x50.txt");
-            world.populate(10);
+            world.populate(20);
 
             String input;
             do {
