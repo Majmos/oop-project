@@ -53,6 +53,7 @@ public class World {
     }
 
     public void update() {
+        Renderer.clearScreen();
         for(Animal animal: this.animals) {
             animal.update();
         }

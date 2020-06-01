@@ -9,6 +9,10 @@ public class AiStateRoam implements IAiState {
 
     @Override
     public IAiState update() {
+        IAiState other = checkHungerAndEnergy();
+        if(other != null) {
+            return other;
+        }
         if(phase == 0) {
             animal.move(1, 0);
         } else if(phase == 1) {
@@ -26,6 +30,16 @@ public class AiStateRoam implements IAiState {
             return new AiStateCopulate(animal);
         }
 
+        return null;
+    }
+
+    private IAiState checkHungerAndEnergy() {
+        if(animal.getHunger() < 35 && animal.getHunger() < animal.getEnergy()) {
+            return new AiStateLookForFood(animal);
+        }
+        if(animal.getEnergy() < 35) {
+            return new AiStateSleep(animal);
+        }
         return null;
     }
 

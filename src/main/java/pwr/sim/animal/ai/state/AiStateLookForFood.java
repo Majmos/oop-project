@@ -7,23 +7,26 @@ import pwr.sim.tile.ForestTile;
 
 public class AiStateLookForFood implements IAiState {
     public AiStateLookForFood(Animal animal) {
-        this.position = animal.getPosition();
         this.world = animal.getWorld();
         this.animal = animal;
     }
 
     @Override
     public IAiState update() {
-        if(animal.getHunger() == 100) {
+        if(animal.getHunger() >= 99) {
             return new AiStatePop();
         }
-        if(world.getTile(position) instanceof ForestTile) {
+        Position2D position = animal.getPosition();
+        int distanceX = 0;
+        int distanceY = 0;
+        int minimum = 100000;
+        if(world.getTile(position) instanceof ForestTile && world.getTile(position).getFlora() > 0) {
             return new AiStateEatPlant(animal);
         }
         if(!hasDestination) {
             for (int y = position.getY() - 5; y < position.getY() + 5; y++) {
                 for (int x = position.getX() - 5; x < position.getX() + 5; x++) {
-                    if (world.getTile(x, y) instanceof ForestTile) {
+                    if (world.getTile(x, y) instanceof ForestTile && world.getTile(x, y).getFlora() > 0) {
                         distanceX = x - position.getX();
                         distanceY = y - position.getY();
                         if (Math.abs(distanceX) + Math.abs(distanceY) < minimum) {
@@ -37,17 +40,17 @@ public class AiStateLookForFood implements IAiState {
             }
         }
         if(minX < 0) {
-            position.move(-1,0);
+            animal.move(-1,0);
             minX++;
         } else if(minX > 0) {
-            position.move(1,0);
+            animal.move(1,0);
             minX--;
         }
         if(minY < 0) {
-            position.move(0,-1);
+            animal.move(0,-1);
             minY++;
         } else if(minY > 0) {
-            position.move(0,1);
+            animal.move(0,1);
             minY--;
         }
         if(minX == 0 && minY == 0) hasDestination = false;
@@ -55,11 +58,7 @@ public class AiStateLookForFood implements IAiState {
     }
 
     private World world;
-    private Position2D position;
     private Animal animal;
-    private int distanceX = 0;
-    private int distanceY = 0;
-    private int minimum = 100000;
     private int minX = 0;
     private int minY = 0;
     private boolean hasDestination = false;

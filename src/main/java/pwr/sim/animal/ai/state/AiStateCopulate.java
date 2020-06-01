@@ -16,9 +16,13 @@ public class AiStateCopulate implements IAiState {
 
     @Override
     public IAiState update() {
+        IAiState other = checkHungerAndEnergy();
+        if(other != null) {
+            return other;
+        }
         if(mate == null) {
             for (Animal mate: animals) {
-                if (mate.getClass() == animal.getClass()) {
+                if (mate.getClass().equals(animal.getClass())) {
                     matePosition = mate.getPosition();
                     distanceX = matePosition.getX() - position.getX();
                     distanceY = matePosition.getY() - position.getY();
@@ -46,8 +50,18 @@ public class AiStateCopulate implements IAiState {
             minY--;
         }
         if(minX == 0 && minY == 0) {
-            world.breed(this.animal);
+//            world.breed(this.animal);
             mate = null;
+        }
+        return null;
+    }
+
+    private IAiState checkHungerAndEnergy() {
+        if(animal.getHunger() < 35 && animal.getHunger() < animal.getEnergy()) {
+            return new AiStateLookForFood(animal);
+        }
+        if(animal.getEnergy() < 35) {
+            return new AiStateSleep(animal);
         }
         return null;
     }
