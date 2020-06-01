@@ -6,17 +6,15 @@ import pwr.sim.tile.Tile;
 public class AiStateEatPlant implements IAiState {
     public AiStateEatPlant(Animal animal) {
         this.tile = animal.getWorld().getTile(animal.getPosition());
-        this.flora = tile.getFlora();
         this.animal = animal;
-        this.hunger = animal.getHunger();
     }
     @Override
     public IAiState update() {
-        if(flora < 5 || hunger == 100) {
+        if(tile.getFlora() < 5 || animal.getHunger() >= 100) {
             return new AiStatePop();
         }
-        tile.changeFlora(-5);
-        animal.changeHunger(5);
+        tile.changeFlora(-10);
+        animal.changeHunger(20);
         return null;
     }
 

@@ -28,4 +28,8 @@ public class Renderer {
     public static void disableAlternateScreenBuffer() {
         System.out.print("\u001B[?1049l");
     }
+
+    public static void clearScreen() {
+        System.out.print("\u001B[2J");
+    }
 }

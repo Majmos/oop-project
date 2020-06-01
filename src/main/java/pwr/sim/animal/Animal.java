@@ -3,6 +3,9 @@ package pwr.sim.animal;
 import pwr.sim.Position2D;
 import pwr.sim.World;
 import pwr.sim.animal.ai.AiBehaviour;
+import pwr.sim.animal.ai.state.AiStateLookForFood;
+import pwr.sim.animal.ai.state.AiStateSleep;
+import pwr.sim.animal.ai.state.IAiState;
 import pwr.sim.tile.Tile;
 import pwr.sim.tile.WaterTile;
 
@@ -82,6 +85,16 @@ public abstract class Animal {
 
     public void changeHealth(int shift) {
         this.health += shift;
+    }
+
+    public IAiState checkHungerAndEnergy() {
+        if(hunger < 35 && hunger < energy) {
+            return new AiStateLookForFood(this);
+        }
+        if(energy < 35) {
+            return new AiStateSleep(this);
+        }
+        return null;
     }
 
     private AiBehaviour aiBehaviour;
