@@ -19,6 +19,8 @@ public class AiBehaviour {
     }
 
     public void update() {
+        animal.changeHunger(-10);
+        animal.changeEnergy(-5);
         IAiState newState = currentState.peek().update();
         animal.changeHunger(-3);
         animal.changeEnergy(-3);

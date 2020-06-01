@@ -87,6 +87,16 @@ public abstract class Animal {
         this.health += shift;
     }
 
+    public IAiState checkHungerAndEnergy() {
+        if(hunger < 35 && hunger < energy) {
+            return new AiStateLookForFood(this);
+        }
+        if(energy < 35) {
+            return new AiStateSleep(this);
+        }
+        return null;
+    }
+
     private AiBehaviour aiBehaviour;
     protected World world;
     private int health;
