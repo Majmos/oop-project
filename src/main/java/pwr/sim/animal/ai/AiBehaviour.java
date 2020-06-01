@@ -14,10 +14,12 @@ public class AiBehaviour {
     public AiBehaviour(Animal animal) {
         this.animal = animal;
         currentState = new Stack<>();
-        currentState.push(new AiStateLookForFood(this.animal));
+        currentState.push(new AiStateRoam(this.animal));
     }
 
     public void update() {
+        animal.changeHunger(-10);
+        animal.changeEnergy(-5);
         IAiState newState = currentState.peek().update();
         if(newState != null) {
             // TODO this is bad. we should fix this
@@ -27,6 +29,13 @@ public class AiBehaviour {
             }
             currentState.push(newState);
         }
+    }
+
+    private void pushState(IAiState other) {
+        if(currentState.peek().getClass().equals(other.getClass())){
+            return;
+        }
+        currentState.push(other);
     }
 
     protected final Stack<IAiState> currentState;
