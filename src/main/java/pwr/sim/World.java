@@ -61,7 +61,7 @@ public class World {
     public void populate(int numAnimals) {
         Random pos = new Random();
         AnimalType[] animalTypes = AnimalType.values();
-        for(int i = 0; i < numAnimals; i += 2) {
+        for(int i = 0; i < numAnimals; i++) {
             spawnAnimal(animalTypes[i % animalTypes.length]);
         }
     }
