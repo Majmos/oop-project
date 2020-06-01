@@ -8,6 +8,9 @@ import pwr.sim.tile.WaterTile;
 
 public abstract class Animal {
     public void update() {
+        if(health <= 0 || energy <= 0 || hunger <= 0) {
+            //Erase animal object
+        }
         aiBehaviour.update();
     }
 
@@ -86,5 +89,5 @@ public abstract class Animal {
     private int health;
     protected Position2D position;
     private int energy = 80;
-    private int hunger;
+    private int hunger = 80;
 }

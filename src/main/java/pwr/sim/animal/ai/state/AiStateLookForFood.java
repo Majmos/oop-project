@@ -35,25 +35,25 @@ public class AiStateLookForFood implements IAiState {
                     }
                 }
             }
-        } else {
-            if(minX < 0) {
-                position.move(-1,0);
-                minX++;
-            } else if(minX > 0) {
-                position.move(1,0);
-                minX--;
-            }
-            if(minY < 0) {
-                position.move(0,-1);
-                minY++;
-            } else if(minY > 0) {
-                position.move(0,1);
-                minY--;
-            }
-            if(minX == 0 && minY == 0) hasDestination = false;
         }
+        if(minX < 0) {
+            position.move(-1,0);
+            minX++;
+        } else if(minX > 0) {
+            position.move(1,0);
+            minX--;
+        }
+        if(minY < 0) {
+            position.move(0,-1);
+            minY++;
+        } else if(minY > 0) {
+            position.move(0,1);
+            minY--;
+        }
+        if(minX == 0 && minY == 0) hasDestination = false;
         return null;
     }
+
     private World world;
     private Position2D position;
     private Animal animal;

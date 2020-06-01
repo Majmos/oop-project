@@ -15,5 +15,14 @@ public abstract class Tile {
         this.flora += shift;
     }
 
-    private int flora;
+    public int getFlesh() {
+        return this.flesh;
+    }
+
+    public void changeFlesh(int shift) {
+        this.flesh += shift;
+    }
+
+    private int flora = 20;
+    private int flesh;
 }
