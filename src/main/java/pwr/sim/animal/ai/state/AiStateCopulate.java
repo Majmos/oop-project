@@ -22,7 +22,7 @@ public class AiStateCopulate implements IAiState {
         }
         if(mate == null) {
             for (Animal mate: animals) {
-                if (mate.getClass().equals(animal.getClass())) {
+                if (mate.getClass().equals(animal.getClass()) && mate != animal) {
                     matePosition = mate.getPosition();
                     distanceX = matePosition.getX() - position.getX();
                     distanceY = matePosition.getY() - position.getY();
@@ -52,6 +52,7 @@ public class AiStateCopulate implements IAiState {
         if(minX == 0 && minY == 0) {
 //            world.breed(this.animal);
             mate = null;
+            return new AiStatePop();
         }
         return null;
     }
