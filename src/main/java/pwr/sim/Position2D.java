@@ -23,6 +23,11 @@ public class Position2D implements Cloneable {
         }
     }
 
+    @Override
+    public String toString() {
+        return String.format("{x: %d, y: %d}", x, y);
+    }
+
     public int getX() {
         return this.x;
     }

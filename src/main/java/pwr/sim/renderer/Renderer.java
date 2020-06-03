@@ -1,9 +1,26 @@
 package pwr.sim.renderer;
 
 import pwr.sim.Position2D;
+import pwr.sim.World;
+import pwr.sim.animal.Animal;
 
 public class Renderer {
     static final int cellWidth = 3;
+
+    public static void drawUi(World world) {
+        // draw animal list UI
+        Renderer.setCursorPosition(52 * cellWidth, 1);
+        System.out.print("Animals:");
+
+        int i = 1;
+        for (Animal animal: world.getAnimals()) {
+            Renderer.setCursorPosition(52 * cellWidth, i + 1);
+            String animalInfo = animal.getStringInfo();
+            System.out.print(i + ": ");
+            System.out.print(animalInfo.substring(0, Math.min(animalInfo.length(), 100)));
+            i++;
+        }
+    }
 
     public static void setCursorPosition(int x, int y) {
         System.out.print(String.format("\u001B[%d;%dH", y, x));
