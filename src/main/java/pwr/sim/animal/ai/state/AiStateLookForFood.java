@@ -17,8 +17,6 @@ public class AiStateLookForFood implements IAiState {
             return new AiStatePop();
         }
         Position2D position = animal.getPosition();
-        int distanceX = 0;
-        int distanceY = 0;
         int minimum = 100000;
         if(world.getTile(position) instanceof ForestTile && world.getTile(position).getFlora() > 0) {
             return new AiStateEatPlant(animal);
@@ -27,10 +25,11 @@ public class AiStateLookForFood implements IAiState {
             for (int y = position.getY() - 5; y < position.getY() + 5; y++) {
                 for (int x = position.getX() - 5; x < position.getX() + 5; x++) {
                     if (world.getTile(x, y) instanceof ForestTile && world.getTile(x, y).getFlora() > 0) {
-                        distanceX = x - position.getX();
-                        distanceY = y - position.getY();
-                        if (Math.abs(distanceX) + Math.abs(distanceY) < minimum) {
-                            minimum = Math.abs(distanceX) + Math.abs(distanceY);
+                        int distanceX = x - position.getX();
+                        int distanceY = y - position.getY();
+                        int currentDistance = Math.abs(distanceX) + Math.abs(distanceY);
+                        if (currentDistance < minimum) {
+                            minimum = currentDistance;
                             minX = distanceX;
                             minY = distanceY;
                             hasDestination = true;
@@ -57,8 +56,8 @@ public class AiStateLookForFood implements IAiState {
         return null;
     }
 
-    private World world;
-    private Animal animal;
+    private final World world;
+    private final Animal animal;
     private int minX = 0;
     private int minY = 0;
     private boolean hasDestination = false;

@@ -9,7 +9,7 @@ import java.util.List;
 public class AiStateCopulate implements IAiState {
     public AiStateCopulate(Animal animal) {
         this.position = animal.getPosition();
-        this.world = animal.getWorld();
+        World world = animal.getWorld();
         this.animal = animal;
         this.animals = world.getAnimals();
     }
@@ -23,11 +23,12 @@ public class AiStateCopulate implements IAiState {
         if(mate == null) {
             for (Animal mate: animals) {
                 if (mate.getClass().equals(animal.getClass())) {
-                    matePosition = mate.getPosition();
-                    distanceX = matePosition.getX() - position.getX();
-                    distanceY = matePosition.getY() - position.getY();
-                    if (Math.abs(distanceX) + Math.abs(distanceY) < minimum) {
-                        minimum = Math.abs(distanceX) + Math.abs(distanceY);
+                    Position2D matePosition = mate.getPosition();
+                    int distanceX = matePosition.getX() - position.getX();
+                    int distanceY = matePosition.getY() - position.getY();
+                    int currentDistance = Math.abs(distanceX) + Math.abs(distanceY);
+                    if (currentDistance < minimum) {
+                        minimum = currentDistance;
                         minX = distanceX;
                         minY = distanceY;
                         this.mate = mate;
@@ -66,13 +67,9 @@ public class AiStateCopulate implements IAiState {
         return null;
     }
 
-    private List<Animal> animals;
-    private Animal animal;
-    private World world;
-    private Position2D position;
-    private Position2D matePosition;
-    private int distanceX = 0;
-    private int distanceY = 0;
+    private final List<Animal> animals;
+    private final Animal animal;
+    private final Position2D position;
     private int minimum = 100000;
     private int minX = 0;
     private int minY = 0;

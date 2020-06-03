@@ -11,7 +11,7 @@ import java.util.List;
 public class AiStateHunt implements IAiState {
     public AiStateHunt(Animal animal) {
         this.position = animal.getPosition();
-        this.world = animal.getWorld();
+        World world = animal.getWorld();
         this.animal = animal;
         this.animals = world.getAnimals();
     }
@@ -24,11 +24,12 @@ public class AiStateHunt implements IAiState {
         if(prey == null) {
             for (Animal prey: animals) {
                 if (prey instanceof Antelope || prey instanceof Hippo) {
-                    preyPosition = prey.getPosition();
-                    distanceX = preyPosition.getX() - position.getX();
-                    distanceY = preyPosition.getY() - position.getY();
-                    if (Math.abs(distanceX) + Math.abs(distanceY) < minimum) {
-                        minimum = Math.abs(distanceX) + Math.abs(distanceY);
+                    Position2D preyPosition = prey.getPosition();
+                    int distanceX = preyPosition.getX() - position.getX();
+                    int distanceY = preyPosition.getY() - position.getY();
+                    int currentDistance = Math.abs(distanceX) + Math.abs(distanceY);
+                    if (currentDistance < minimum) {
+                        minimum = currentDistance;
                         minX = distanceX;
                         minY = distanceY;
                         this.prey = prey;
@@ -51,6 +52,7 @@ public class AiStateHunt implements IAiState {
             minY--;
         }
         if(minX == 0 && minY == 0) {
+            assert prey != null;
             prey.changeHealth(-100);
             prey = null;
             return new AiStateEatCorpse(animal);
@@ -58,13 +60,9 @@ public class AiStateHunt implements IAiState {
         return null;
     }
 
-    private List<Animal> animals;
-    private Animal animal;
-    private World world;
-    private Position2D position;
-    private Position2D preyPosition;
-    private int distanceX = 0;
-    private int distanceY = 0;
+    private final List<Animal> animals;
+    private final Animal animal;
+    private final Position2D position;
     private int minimum = 100000;
     private int minX = 0;
     private int minY = 0;

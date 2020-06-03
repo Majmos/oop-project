@@ -11,6 +11,8 @@ import pwr.sim.tile.WaterTile;
 
 public abstract class Animal {
     public void update() {
+        changeHunger(-10);
+        changeEnergy(-5);
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object
         }
@@ -80,10 +82,6 @@ public abstract class Animal {
         this.hunger += shift;
     }
 
-    public int getHealth() {
-        return this.health;
-    }
-
     public void changeHealth(int shift) {
         this.health += shift;
     }
@@ -98,13 +96,12 @@ public abstract class Animal {
         return null;
     }
 
-
     public void swap() {
         Position2D temp = position;
         position = nextPosition;
         nextPosition = temp;
     }
-  
+
     public String getStringInfo() {
         return String.format("%s, HP: %d, HUN: %d, ENG: %d, POS: %s, STATE: %s",
             this.getClass().getSimpleName(),
