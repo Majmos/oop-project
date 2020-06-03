@@ -103,6 +103,9 @@ public class World {
         for(Animal animal: this.animals) {
             animal.draw();
         }
+
+        Renderer.drawUi(this);
+
         Renderer.setCursorPosition(0, height + 1);
     }
 
