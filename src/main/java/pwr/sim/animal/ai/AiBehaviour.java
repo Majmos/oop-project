@@ -1,7 +1,6 @@
 package pwr.sim.animal.ai;
 
 import pwr.sim.animal.Animal;
-import pwr.sim.animal.ai.state.AiStateLookForFood;
 import pwr.sim.animal.ai.state.AiStatePop;
 import pwr.sim.animal.ai.state.AiStateRoam;
 import pwr.sim.animal.ai.state.IAiState;
@@ -39,6 +38,10 @@ public class AiBehaviour {
             return;
         }
         currentState.push(other);
+    }
+
+    public String debugInfo() {
+        return currentState.peek().debugInfo();
     }
 
     protected final Stack<IAiState> currentState;

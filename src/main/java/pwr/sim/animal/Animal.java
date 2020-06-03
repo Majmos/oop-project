@@ -98,10 +98,22 @@ public abstract class Animal {
         return null;
     }
 
+
     public void swap() {
         Position2D temp = position;
         position = nextPosition;
         nextPosition = temp;
+    }
+  
+    public String getStringInfo() {
+        return String.format("%s, HP: %d, HUN: %d, ENG: %d, POS: %s, STATE: %s",
+            this.getClass().getSimpleName(),
+            health,
+            hunger,
+            energy,
+            position.toString(),
+            aiBehaviour.debugInfo()
+        );
     }
 
     private AiBehaviour aiBehaviour;
