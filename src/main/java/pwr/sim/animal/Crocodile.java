@@ -7,13 +7,13 @@ import pwr.sim.tile.Tile;
 public class Crocodile extends Animal {
     @Override
     public void move(int x, int y) {
-        int newx = this.position.getX() + x;
-        int newy = this.position.getY() + y;
+        int newx = this.nextPosition.getX() + x;
+        int newy = this.nextPosition.getY() + y;
         Tile tile = super.world.getTile(newx, newy);
         if(tile instanceof DesertTile) {
             return;
         }
-        position.move(x, y);
+        nextPosition.move(x, y);
     }
 
     @Override
@@ -22,6 +22,7 @@ public class Crocodile extends Animal {
             throw new Exception("Can't place " + this.getClass().toString() + " on desert");
         }
         this.position = new Position2D(position);
+        this.nextPosition = new Position2D(position);
     }
 
     @Override
