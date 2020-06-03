@@ -14,6 +14,7 @@ public abstract class Animal {
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object
         }
+        nextPosition = position;
         aiBehaviour.update();
     }
 
@@ -31,7 +32,7 @@ public abstract class Animal {
         if(tile instanceof WaterTile) {
             return;
         }
-        position.move(x, y);
+        nextPosition.move(x, y);
     }
 
     public void setAiBehaviour(AiBehaviour aiBehaviour) {
@@ -97,10 +98,17 @@ public abstract class Animal {
         return null;
     }
 
+    public void swap() {
+        Position2D temp = position;
+        position = nextPosition;
+        nextPosition = temp;
+    }
+
     private AiBehaviour aiBehaviour;
     protected World world;
     private int health;
     protected Position2D position;
+    protected Position2D nextPosition;
     private int energy = 80;
     private int hunger = 80;
 }

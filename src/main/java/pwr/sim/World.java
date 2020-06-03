@@ -57,6 +57,9 @@ public class World {
         for(Animal animal: this.animals) {
             animal.update();
         }
+        for(Animal animal: this.animals) {
+            animal.swap();
+        }
     }
 
     public void populate(int numAnimals) {
