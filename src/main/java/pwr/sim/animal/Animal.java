@@ -14,7 +14,6 @@ public abstract class Animal {
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object
         }
-        nextPosition = position;
         aiBehaviour.update();
     }
 
@@ -26,8 +25,8 @@ public abstract class Animal {
     // 2. move to this tile if tile != null AND is not a water tile without the second lookup
     // TODO make move method not check if tile is valid twice
     public void move(int x, int y) {
-        int newx = this.position.getX() + x;
-        int newy = this.position.getY() + y;
+        int newx = this.nextPosition.getX() + x;
+        int newy = this.nextPosition.getY() + y;
         Tile tile = this.world.getTile(newx, newy);
         if(tile instanceof WaterTile) {
             return;
@@ -52,6 +51,7 @@ public abstract class Animal {
             throw new Exception("Can't place " + this.getClass().toString() + " on water");
         }
         this.position = new Position2D(position);
+        this.nextPosition = new Position2D(position);
     }
 
     public World getWorld() {

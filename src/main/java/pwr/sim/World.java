@@ -53,7 +53,6 @@ public class World {
     }
 
     public void update() {
-        Renderer.clearScreen();
         for(Animal animal: this.animals) {
             animal.update();
         }
@@ -93,6 +92,7 @@ public class World {
     }
 
     public void draw() {
+        Renderer.clearScreen();
         Renderer.setCursorPosition(1,1);
         for(int y = 0; y < this.height; y++) {
             for(int x = 0; x < this.width; x++) {
