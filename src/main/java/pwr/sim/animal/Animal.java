@@ -97,6 +97,17 @@ public abstract class Animal {
         return null;
     }
 
+    public String getStringInfo() {
+        return String.format("%s, HP: %d, HUN: %d, ENG: %d, POS: %s, STATE: %s",
+            this.getClass().getSimpleName(),
+            health,
+            hunger,
+            energy,
+            position.toString(),
+            aiBehaviour.debugInfo()
+        );
+    }
+
     private AiBehaviour aiBehaviour;
     protected World world;
     private int health;
