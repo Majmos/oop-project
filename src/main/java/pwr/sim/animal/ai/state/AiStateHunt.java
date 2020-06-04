@@ -23,7 +23,7 @@ public class AiStateHunt implements IAiState {
         if(prey == null) {
             int minimum = 100000;
             for (Animal prey: animals) {
-                if (prey instanceof Antelope || prey instanceof Hippo) {
+                if ((prey instanceof Antelope || prey instanceof Hippo) && prey.getHealth() > 0) {
                     int currentDistance = animal.getPosition().distanceSquared(prey.getPosition());
                     if(currentDistance < minimum) {
                         minimum = currentDistance;

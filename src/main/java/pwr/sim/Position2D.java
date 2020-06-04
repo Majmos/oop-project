@@ -23,6 +23,11 @@ public class Position2D implements Cloneable {
         }
     }
 
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     // probably dying in allocations but muh OOP
     public int distanceSquared(Position2D other) {
         Position2D delta = delta(other);

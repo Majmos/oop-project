@@ -29,7 +29,7 @@ public class AiBehaviour {
         }
     }
 
-    private void pushState(IAiState other) {
+    protected void pushState(IAiState other) {
         if(currentState.peek().getClass().equals(other.getClass())){
             return;
         }

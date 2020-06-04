@@ -15,6 +15,7 @@ public abstract class Animal {
         changeEnergy(-5);
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object
+            world.getTile(position).changeFlesh(20);
         }
         aiBehaviour.update();
     }
@@ -46,13 +47,13 @@ public abstract class Animal {
     // 2. move to this tile if tile != null AND is not a water tile without the second lookup
     // TODO make move method not check if tile is valid twice
     public void move(int x, int y) {
-        int newx = this.nextPosition.getX() + x;
-        int newy = this.nextPosition.getY() + y;
+        int newx = this.position.getX() + x;
+        int newy = this.position.getY() + y;
         Tile tile = this.world.getTile(newx, newy);
         if(tile instanceof WaterTile) {
             return;
         }
-        nextPosition.move(x, y);
+        nextPosition.move(newx, newy);
     }
 
     public void setAiBehaviour(AiBehaviour aiBehaviour) {
@@ -101,6 +102,8 @@ public abstract class Animal {
         this.hunger += shift;
     }
 
+    public int getHealth() { return this.health; }
+
     public void changeHealth(int shift) {
         this.health += shift;
     }
@@ -116,9 +119,7 @@ public abstract class Animal {
     }
 
     public void swap() {
-        Position2D temp = position;
-        position = nextPosition;
-        nextPosition = temp;
+        position.setPosition(nextPosition.getX(), nextPosition.getY());
     }
 
     public String getStringInfo() {
@@ -134,7 +135,7 @@ public abstract class Animal {
 
     private AiBehaviour aiBehaviour;
     protected World world;
-    private int health;
+    private int health = 100;
     protected Position2D position;
     protected Position2D nextPosition;
     private int energy = 80;
