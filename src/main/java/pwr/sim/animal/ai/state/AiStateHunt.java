@@ -22,7 +22,7 @@ public class AiStateHunt implements IAiState {
             return new AiStatePop();
         }
         for (Animal prey: animals) {
-            if (prey instanceof Antelope || prey instanceof Hippo && prey.getHealth() >= 0) {
+            if ((prey instanceof Antelope || prey instanceof Hippo) && prey.getHealth() > 0) {
                 preyPosition = prey.getPosition();
                 distanceX = preyPosition.getX() - position.getX();
                 distanceY = preyPosition.getY() - position.getY();

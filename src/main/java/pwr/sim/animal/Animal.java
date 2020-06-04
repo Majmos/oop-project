@@ -111,7 +111,7 @@ public abstract class Animal {
 
     private AiBehaviour aiBehaviour;
     protected World world;
-    private int health;
+    private int health = 100;
     protected Position2D position;
     private int energy = 80;
     private int hunger = 80;
