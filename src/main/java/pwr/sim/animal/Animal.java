@@ -19,6 +19,25 @@ public abstract class Animal {
         aiBehaviour.update();
     }
 
+    // code object oriented but introduces unnecessary allocations
+    public void approach(Position2D dest) {
+        Position2D diff = position.delta(dest);
+        int x = diff.getX();
+        int y = diff.getY();
+        int stepX = 0, stepY = 0;
+        if(x < 0) {
+            stepX = -1;
+        } else if(x > 0) {
+            stepX = 1;
+        }
+        if(y < 0) {
+            stepY = -1;
+        } else if(y > 0) {
+            stepY = 1;
+        }
+        position.move(stepX, stepY);
+    }
+
     // this method does the tile lookup twice:
     // first we check the tile type by using getTile(x, y) and return if given tile is a water tile
     // then we use position.move(x, y) which uses getTile a second time to check if tile we want is within bounds

@@ -10,7 +10,6 @@ import java.util.List;
 
 public class AiStateHunt implements IAiState {
     public AiStateHunt(Animal animal) {
-        this.position = animal.getPosition();
         World world = animal.getWorld();
         this.animal = animal;
         this.animals = world.getAnimals();
@@ -22,37 +21,22 @@ public class AiStateHunt implements IAiState {
             return new AiStatePop();
         }
         if(prey == null) {
+            int minimum = 100000;
             for (Animal prey: animals) {
                 if (prey instanceof Antelope || prey instanceof Hippo) {
-                    Position2D preyPosition = prey.getPosition();
-                    int distanceX = preyPosition.getX() - position.getX();
-                    int distanceY = preyPosition.getY() - position.getY();
-                    int currentDistance = Math.abs(distanceX) + Math.abs(distanceY);
-                    if (currentDistance < minimum) {
+                    int currentDistance = animal.getPosition().distanceSquared(prey.getPosition());
+                    if(currentDistance < minimum) {
                         minimum = currentDistance;
-                        minX = distanceX;
-                        minY = distanceY;
                         this.prey = prey;
                     }
                 }
             }
         }
-        if(minX < 0) {
-            position.move(-1,0);
-            minX++;
-        } else if(minX > 0) {
-            position.move(1,0);
-            minX--;
+        if(prey == null) {
+            return null;
         }
-        if(minY < 0) {
-            position.move(0,-1);
-            minY++;
-        } else if(minY > 0) {
-            position.move(0,1);
-            minY--;
-        }
-        if(minX == 0 && minY == 0) {
-            assert prey != null;
+        animal.approach(prey.getPosition());
+        if(animal.getPosition().equals(prey.getPosition())) {
             prey.changeHealth(-100);
             prey = null;
             return new AiStateEatCorpse(animal);
@@ -62,9 +46,5 @@ public class AiStateHunt implements IAiState {
 
     private final List<Animal> animals;
     private final Animal animal;
-    private final Position2D position;
-    private int minimum = 100000;
-    private int minX = 0;
-    private int minY = 0;
     private Animal prey = null;
 }
