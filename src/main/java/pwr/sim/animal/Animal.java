@@ -11,10 +11,31 @@ import pwr.sim.tile.WaterTile;
 
 public abstract class Animal {
     public void update() {
+        changeHunger(-10);
+        changeEnergy(-5);
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object
         }
         aiBehaviour.update();
+    }
+
+    // code object oriented but introduces unnecessary allocations
+    public void approach(Position2D dest) {
+        Position2D diff = position.delta(dest);
+        int x = diff.getX();
+        int y = diff.getY();
+        int stepX = 0, stepY = 0;
+        if(x < 0) {
+            stepX = -1;
+        } else if(x > 0) {
+            stepX = 1;
+        }
+        if(y < 0) {
+            stepY = -1;
+        } else if(y > 0) {
+            stepY = 1;
+        }
+        position.move(stepX, stepY);
     }
 
     // this method does the tile lookup twice:
@@ -80,10 +101,6 @@ public abstract class Animal {
         this.hunger += shift;
     }
 
-    public int getHealth() {
-        return this.health;
-    }
-
     public void changeHealth(int shift) {
         this.health += shift;
     }
@@ -98,13 +115,12 @@ public abstract class Animal {
         return null;
     }
 
-
     public void swap() {
         Position2D temp = position;
         position = nextPosition;
         nextPosition = temp;
     }
-  
+
     public String getStringInfo() {
         return String.format("%s, HP: %d, HUN: %d, ENG: %d, POS: %s, STATE: %s",
             this.getClass().getSimpleName(),
