@@ -32,7 +32,7 @@ public abstract class Animal {
         if(tile instanceof WaterTile) {
             return;
         }
-        position.move(x, y);
+        nextPosition.setPosition(newx, newy);
     }
 
     public void setAiBehaviour(AiBehaviour aiBehaviour) {
@@ -52,6 +52,7 @@ public abstract class Animal {
             throw new Exception("Can't place " + this.getClass().toString() + " on water");
         }
         this.position = new Position2D(position);
+        this.nextPosition = new Position2D(position);
     }
 
     public World getWorld() {
@@ -98,6 +99,13 @@ public abstract class Animal {
         return null;
     }
 
+
+    public void swap() {
+        Position2D temp = position;
+        position = nextPosition;
+        nextPosition = temp;
+    }
+  
     public String getStringInfo() {
         return String.format("%s, HP: %d, HUN: %d, ENG: %d, POS: %s, STATE: %s",
             this.getClass().getSimpleName(),
@@ -113,6 +121,7 @@ public abstract class Animal {
     protected World world;
     private int health = 100;
     protected Position2D position;
+    protected Position2D nextPosition;
     private int energy = 80;
     private int hunger = 80;
 }
