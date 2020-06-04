@@ -18,7 +18,7 @@ public class AiStateCopulate implements IAiState {
         if(mate == null) {
             int minimum = 100000;
             for (Animal mate: world.getAnimals()) {
-                if (mate.getClass().equals(animal.getClass())) {
+                if (mate.getClass().equals(animal.getClass()) && mate != animal) {
                     int currentDistance = animal.getPosition().distanceSquared(mate.getPosition());
                     if (currentDistance < minimum) {
                         minimum = currentDistance;
@@ -28,6 +28,7 @@ public class AiStateCopulate implements IAiState {
             }
         }
         animal.approach(mate.getPosition());
+        //When animals have done copulating we need to return new AiStatePop
         return null;
     }
 

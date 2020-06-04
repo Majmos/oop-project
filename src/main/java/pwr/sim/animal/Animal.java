@@ -11,8 +11,8 @@ import pwr.sim.tile.WaterTile;
 
 public abstract class Animal {
     public void update() {
-        changeHunger(-10);
-        changeEnergy(-5);
+        changeHunger(-3);
+        changeEnergy(-3);
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object
             world.getTile(position).changeFlesh(20);
@@ -27,16 +27,16 @@ public abstract class Animal {
         int y = diff.getY();
         int stepX = 0, stepY = 0;
         if(x < 0) {
-            stepX = -1;
-        } else if(x > 0) {
             stepX = 1;
+        } else if(x > 0) {
+            stepX = -1;
         }
         if(y < 0) {
-            stepY = -1;
-        } else if(y > 0) {
             stepY = 1;
+        } else if(y > 0) {
+            stepY = -1;
         }
-        position.move(stepX, stepY);
+        nextPosition.move(stepX, stepY);
     }
 
     // this method does the tile lookup twice:
@@ -53,7 +53,7 @@ public abstract class Animal {
         if(tile instanceof WaterTile) {
             return;
         }
-        nextPosition.move(newx, newy);
+        nextPosition.move(x, y);
     }
 
     public void setAiBehaviour(AiBehaviour aiBehaviour) {
