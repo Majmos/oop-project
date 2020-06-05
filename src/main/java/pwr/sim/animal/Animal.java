@@ -28,14 +28,14 @@ public abstract class Animal {
         int y = diff.getY();
         int stepX = 0, stepY = 0;
         if(x < 0) {
-            stepX = 1;
-        } else if(x > 0) {
             stepX = -1;
+        } else if(x > 0) {
+            stepX = 1;
         }
         if(y < 0) {
-            stepY = 1;
-        } else if(y > 0) {
             stepY = -1;
+        } else if(y > 0) {
+            stepY = 1;
         }
         nextPosition.move(stepX, stepY);
     }

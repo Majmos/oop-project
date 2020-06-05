@@ -35,8 +35,8 @@ public class Position2D implements Cloneable {
     }
 
     public Position2D delta(Position2D other) {
-        int deltaX = x - other.getX();
-        int deltaY = y - other.getY();
+        int deltaX = other.getX() - x;
+        int deltaY = other.getY() - y;
 
         return new Position2D(deltaX, deltaY, world);
     }
