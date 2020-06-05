@@ -15,6 +15,7 @@ public class World {
         this.height = height;
         this.tiles = tiles;
         this.animals = new ArrayList<>();
+        this.toSpawn = new ArrayList<>();
         this.animalFactory = new AnimalFactory(this);
     }
 
@@ -59,6 +60,10 @@ public class World {
         for(Animal animal: this.animals) {
             animal.swap();
         }
+        if(!(this.toSpawn.isEmpty())) {
+            addToSpawn();
+            this.toSpawn.clear();
+        }
     }
 
     public void populate(int numAnimals) {
@@ -89,6 +94,15 @@ public class World {
     private void spawnAnimal(Animal animal, Position2D position) {
         Animal other = this.animalFactory.createAnimal(animal, position);
         this.animals.add(other);
+    }
+
+    public void toSpawn(Animal animal, Position2D position) {
+        Animal other = this.animalFactory.createAnimal(animal, position);
+        this.toSpawn.add(other);
+    }
+
+    private void addToSpawn() {
+        this.animals.addAll(this.toSpawn);
     }
 
     public void draw() {
@@ -150,6 +164,7 @@ public class World {
     private final AnimalFactory animalFactory;
     private final Tile[] tiles;
     private final List<Animal> animals;
+    private List<Animal> toSpawn;
     private final int width;
     private final int height;
 }

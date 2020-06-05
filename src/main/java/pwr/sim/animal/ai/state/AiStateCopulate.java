@@ -2,6 +2,7 @@ package pwr.sim.animal.ai.state;
 
 import pwr.sim.World;
 import pwr.sim.animal.Animal;
+import pwr.sim.animal.AnimalFactory;
 
 public class AiStateCopulate implements IAiState {
     public AiStateCopulate(Animal animal) {
@@ -28,7 +29,11 @@ public class AiStateCopulate implements IAiState {
             }
         }
         animal.approach(mate.getPosition());
-        //When animals have done copulating we need to return new AiStatePop
+        if(animal.getPosition().distanceSquared(mate.getPosition()) <= 2) {
+            mate = null;
+            world.toSpawn(animal, animal.getPosition());
+            return new AiStatePop();
+        }
         return null;
     }
 
