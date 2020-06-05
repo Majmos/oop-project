@@ -177,8 +177,8 @@ public class World {
     private final AnimalFactory animalFactory;
     private final Tile[] tiles;
     private final List<Animal> animals;
-    private List<Animal> toSpawn;
-    private List<Animal> toRemove;
+    private final List<Animal> toSpawn;
+    private final List<Animal> toRemove;
     private final int width;
     private final int height;
 }
