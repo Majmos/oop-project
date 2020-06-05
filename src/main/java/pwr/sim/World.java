@@ -61,11 +61,11 @@ public class World {
         for(Animal animal: this.animals) {
             animal.swap();
         }
-        if(!(this.toSpawn.isEmpty())) {
+        if(!toSpawn.isEmpty()) {
             addToSpawn();
             this.toSpawn.clear();
         }
-        if(!(this.toRemove.isEmpty())) {
+        if(!toRemove.isEmpty()) {
             removeToRemove();
             this.toRemove.clear();
         }

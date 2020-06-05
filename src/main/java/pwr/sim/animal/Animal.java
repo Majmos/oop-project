@@ -37,7 +37,7 @@ public abstract class Animal {
         } else if(y > 0) {
             stepY = 1;
         }
-        nextPosition.move(stepX, stepY);
+        move(stepX, stepY);
     }
 
     // this method does the tile lookup twice:
