@@ -16,6 +16,7 @@ public class World {
         this.tiles = tiles;
         this.animals = new ArrayList<>();
         this.toSpawn = new ArrayList<>();
+        this.toRemove = new ArrayList<>();
         this.animalFactory = new AnimalFactory(this);
     }
 
@@ -64,6 +65,10 @@ public class World {
             addToSpawn();
             this.toSpawn.clear();
         }
+        if(!(this.toRemove.isEmpty())) {
+            removeToRemove();
+            this.toRemove.clear();
+        }
     }
 
     public void populate(int numAnimals) {
@@ -103,6 +108,14 @@ public class World {
 
     private void addToSpawn() {
         this.animals.addAll(this.toSpawn);
+    }
+
+    public void toRemove(Animal animal) {
+        this.toRemove.add(animal);
+    }
+
+    private void removeToRemove() {
+        this.animals.removeAll(this.toRemove);
     }
 
     public void draw() {
@@ -165,6 +178,7 @@ public class World {
     private final Tile[] tiles;
     private final List<Animal> animals;
     private List<Animal> toSpawn;
+    private List<Animal> toRemove;
     private final int width;
     private final int height;
 }

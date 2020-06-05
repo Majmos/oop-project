@@ -15,6 +15,7 @@ public abstract class Animal {
         changeEnergy(-3);
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object
+            world.toRemove(this);
             world.getTile(position).changeFlesh(20);
         }
         aiBehaviour.update();
