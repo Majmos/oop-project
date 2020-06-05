@@ -17,7 +17,7 @@ public class AiStateHunt implements IAiState {
 
     @Override
     public IAiState update() {
-        if (animal.getHunger() == 100) {
+        if (animal.getHunger() >= 100) {
             return new AiStatePop();
         }
         if(prey == null) {

@@ -15,6 +15,8 @@ public class World {
         this.height = height;
         this.tiles = tiles;
         this.animals = new ArrayList<>();
+        this.toSpawn = new ArrayList<>();
+        this.toRemove = new ArrayList<>();
         this.animalFactory = new AnimalFactory(this);
     }
 
@@ -59,12 +61,20 @@ public class World {
         for(Animal animal: this.animals) {
             animal.swap();
         }
+        if(!toSpawn.isEmpty()) {
+            addToSpawn();
+            this.toSpawn.clear();
+        }
+        if(!toRemove.isEmpty()) {
+            removeToRemove();
+            this.toRemove.clear();
+        }
     }
 
-    public void populate(int numAnimals) {
-        AnimalType[] animalTypes = AnimalType.values();
+    public void populate(int numAnimals, AnimalType animalType) {
+        //AnimalType[] animalTypes = AnimalType.values();
         for(int i = 0; i < numAnimals; i++) {
-            spawnAnimal(animalTypes[i % animalTypes.length]);
+            spawnAnimal(animalType);
         }
     }
 
@@ -89,6 +99,23 @@ public class World {
     private void spawnAnimal(Animal animal, Position2D position) {
         Animal other = this.animalFactory.createAnimal(animal, position);
         this.animals.add(other);
+    }
+
+    public void toSpawn(Animal animal, Position2D position) {
+        Animal other = this.animalFactory.createAnimal(animal, position);
+        this.toSpawn.add(other);
+    }
+
+    private void addToSpawn() {
+        this.animals.addAll(this.toSpawn);
+    }
+
+    public void toRemove(Animal animal) {
+        this.toRemove.add(animal);
+    }
+
+    private void removeToRemove() {
+        this.animals.removeAll(this.toRemove);
     }
 
     public void draw() {
@@ -150,6 +177,8 @@ public class World {
     private final AnimalFactory animalFactory;
     private final Tile[] tiles;
     private final List<Animal> animals;
+    private final List<Animal> toSpawn;
+    private final List<Animal> toRemove;
     private final int width;
     private final int height;
 }
