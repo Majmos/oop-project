@@ -71,10 +71,10 @@ public class World {
         }
     }
 
-    public void populate(int numAnimals) {
-        AnimalType[] animalTypes = AnimalType.values();
+    public void populate(int numAnimals, AnimalType animalType) {
+        //AnimalType[] animalTypes = AnimalType.values();
         for(int i = 0; i < numAnimals; i++) {
-            spawnAnimal(animalTypes[i % animalTypes.length]);
+            spawnAnimal(animalType);
         }
     }
 

@@ -1,5 +1,6 @@
 package pwr.sim;
 
+import pwr.sim.animal.AnimalType;
 import pwr.sim.renderer.Renderer;
 
 import java.util.Scanner;
@@ -15,7 +16,11 @@ public class App {
 
         try {
             world = World.loadFromFile("assets/map50x50.txt");
-            world.populate(20);
+            world.populate(3, AnimalType.WOLF);
+            world.populate(3, AnimalType.LION);
+            world.populate(3, AnimalType.CROCODILE);
+            world.populate(6, AnimalType.ANTELOPE);
+            world.populate(6, AnimalType.HIPPO);
 
             String input;
             do {
