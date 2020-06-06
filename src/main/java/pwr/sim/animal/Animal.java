@@ -20,9 +20,11 @@ public abstract class Animal {
         } else if(hunger < 35 && hunger < energy) {
             isHungry = true;
             isTired = false;
+            wantToMate = false;
         } else if(energy < 35) {
             isTired = true;
             isHungry = false;
+            wantToMate = false;
         }
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object

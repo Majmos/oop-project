@@ -37,11 +37,8 @@ public class AiStateHunt implements IAiState {
         }
         animal.approach(prey.getPosition());
         if(animal.wantToMate) {
-            animal.isTired = false;
-            animal.isHungry = false;
             return new AiStateCopulate(animal);
         } else if(animal.isTired) {
-            animal.isTired = false;
             return new AiStateSleep(animal);
         }
         if(animal.getPosition().equals(prey.getPosition())) {

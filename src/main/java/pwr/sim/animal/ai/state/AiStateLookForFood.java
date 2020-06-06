@@ -41,11 +41,8 @@ public class AiStateLookForFood implements IAiState {
         }
         animal.approach(destination);
         if(animal.wantToMate) {
-            animal.isTired = false;
-            animal.isHungry = false;
             return new AiStateCopulate(animal);
         } else if(animal.isTired) {
-            animal.isTired = false;
             return new AiStateSleep(animal);
         }
         if(animal.getPosition().equals(destination)) {

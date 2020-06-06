@@ -14,11 +14,8 @@ public class AiStateSleep implements IAiState {
             return new AiStatePop();
         }
         if(animal.wantToMate) {
-            animal.isTired = false;
-            animal.isHungry = false;
             return new AiStateCopulate(animal);
         } else if(animal.isHungry) {
-            animal.isHungry = false;
             return new AiStateLookForFood(animal);
         }
         return null;

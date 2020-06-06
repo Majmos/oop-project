@@ -26,10 +26,8 @@ public class AiStateCopulate implements IAiState {
         }
         animal.approach(mate.getPosition());
         if(animal.isHungry) {
-            animal.isHungry = false;
             return new AiStateLookForFood(animal);
         } else if(animal.isTired) {
-            animal.isTired = false;
             return new AiStateSleep(animal);
         }
         if(animal.getPosition().distanceSquared(mate.getPosition()) <= 2) {
