@@ -18,6 +18,14 @@ public class AiStateEatCorpse implements IAiState {
         }
         tile.changeFlesh(-5);
         animal.changeHunger(25);
+        if(animal.wantToMate) {
+            animal.isTired = false;
+            animal.isHungry = false;
+            return new AiStateCopulate(animal);
+        } else if(animal.isTired) {
+            animal.isTired = false;
+            return new AiStateSleep(animal);
+        }
         return null;
     }
     private final int flesh;

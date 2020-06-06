@@ -58,6 +58,9 @@ public class World {
         for(Animal animal: this.animals) {
             animal.update();
         }
+        for(Tile tile: this.tiles) {
+            tile.changeFlora(3);
+        }
         for(Animal animal: this.animals) {
             animal.swap();
         }

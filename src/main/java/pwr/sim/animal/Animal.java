@@ -13,6 +13,17 @@ public abstract class Animal {
     public void update() {
         changeHunger(-3);
         changeEnergy(-3);
+        if(hunger > 80 && energy > 80) {
+            wantToMate = true;
+            isHungry = false;
+            isTired = false;
+        } else if(hunger < 35 && hunger < energy) {
+            isHungry = true;
+            isTired = false;
+        } else if(energy < 35) {
+            isTired = true;
+            isHungry = false;
+        }
         if(health <= 0 || energy <= 0 || hunger <= 0) {
             //Erase animal object
             world.toRemove(this);
@@ -134,6 +145,9 @@ public abstract class Animal {
         );
     }
 
+    public boolean wantToMate;
+    public boolean isHungry;
+    public boolean isTired;
     private AiBehaviour aiBehaviour;
     protected World world;
     private int health = 100;

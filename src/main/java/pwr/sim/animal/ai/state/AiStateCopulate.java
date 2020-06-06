@@ -12,10 +12,6 @@ public class AiStateCopulate implements IAiState {
 
     @Override
     public IAiState update() {
-        IAiState other = checkHungerAndEnergy();
-        if(other != null) {
-            return other;
-        }
         if(mate == null) {
             int minimum = 100000;
             for (Animal mate: world.getAnimals()) {
@@ -29,20 +25,17 @@ public class AiStateCopulate implements IAiState {
             }
         }
         animal.approach(mate.getPosition());
+        if(animal.isHungry) {
+            animal.isHungry = false;
+            return new AiStateLookForFood(animal);
+        } else if(animal.isTired) {
+            animal.isTired = false;
+            return new AiStateSleep(animal);
+        }
         if(animal.getPosition().distanceSquared(mate.getPosition()) <= 2) {
             mate = null;
             world.toSpawn(animal, animal.getPosition());
             return new AiStatePop();
-        }
-        return null;
-    }
-
-    private IAiState checkHungerAndEnergy() {
-        if(animal.getHunger() < 35 && animal.getHunger() < animal.getEnergy()) {
-            return new AiStateLookForFood(animal);
-        }
-        if(animal.getEnergy() < 35) {
-            return new AiStateSleep(animal);
         }
         return null;
     }
