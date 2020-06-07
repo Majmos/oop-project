@@ -168,11 +168,51 @@ public class World {
         spawnAnimal(animal, pos);
     }
 
+    public Position2D findNearestPlants(Position2D position) {
+        boolean[] visitedMap = new boolean[width * height];
+
+        return bfsPlants(position, visitedMap);
+    }
+
+    private Position2D bfsPlants(Position2D pos, boolean[] visitedMap) {
+        int x = pos.getX();
+        int y = pos.getY();
+
+        visitedMap[y * width + x] = true;
+
+        if(getTile(pos).getFlora() > 20) {
+            return pos;
+        }
+
+        Position2D[] neighbours = new Position2D[] {
+                newPosition(x+1, y),
+                newPosition(x, y+1),
+                newPosition(x-1, y),
+                newPosition(x, y-1)
+        };
+
+        for(Position2D neighbour: neighbours) {
+            if(neighbour == null) {
+                continue;
+            }
+            int i = neighbour.getY() * width + neighbour.getX();
+            if(visitedMap[i]) {
+                continue;
+            }
+
+            bfsPlants(neighbour, visitedMap);
+        }
+        return null;
+    }
+
     public List<Animal> getAnimals() {
         return this.animals;
     }
 
     private Position2D newPosition(int x, int y) {
+        if(x >= width || x < 0 || y >= height || y < 0) {
+            return null;
+        }
         return new Position2D(x, y, this);
     }
 
