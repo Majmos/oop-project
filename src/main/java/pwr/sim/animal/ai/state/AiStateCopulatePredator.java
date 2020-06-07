@@ -24,16 +24,18 @@ public class AiStateCopulatePredator implements IAiState {
                 }
             }
         }
-        animal.approach(mate.getPosition());
+        if(mate != null) {
+            animal.approach(mate.getPosition());
+            if (animal.getPosition().distanceSquared(mate.getPosition()) <= 2) {
+                mate = null;
+                world.toSpawn(animal, animal.getPosition());
+                return new AiStateSleepPredator(animal);
+            }
+        }
         if(animal.isHungry) {
             return new AiStateHunt(animal);
         } else if(animal.isTired) {
             return new AiStateSleepPredator(animal);
-        }
-        if(animal.getPosition().distanceSquared(mate.getPosition()) <= 2) {
-            mate = null;
-            world.toSpawn(animal, animal.getPosition());
-            return new AiStatePop();
         }
         return null;
     }

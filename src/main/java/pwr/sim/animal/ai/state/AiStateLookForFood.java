@@ -13,9 +13,6 @@ public class AiStateLookForFood implements IAiState {
 
     @Override
     public IAiState update() {
-        if(animal.getHunger() >= 99) {
-            return new AiStatePop();
-        }
         Position2D position = animal.getPosition();
         World world = animal.getWorld();
         int minimum = 100000;
@@ -43,6 +40,9 @@ public class AiStateLookForFood implements IAiState {
         if(animal.wantToMate) {
             return new AiStateCopulate(animal);
         } else if(animal.isTired) {
+            return new AiStateSleep(animal);
+        }
+        if(animal.getHunger() >= 100) {
             return new AiStateSleep(animal);
         }
         if(animal.getPosition().equals(destination)) {

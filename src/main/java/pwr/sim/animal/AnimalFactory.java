@@ -52,7 +52,7 @@ public class AnimalFactory {
     public Animal createAnimal(Animal animal, Position2D position) {
         try {
             Animal other = animal.getClass().getConstructor().newInstance();
-            AiBehaviour aiBehaviour = animal.getAiBehaviour().getClass().getConstructor().newInstance();
+            AiBehaviour aiBehaviour = animal.getAiBehaviour().getClass().getConstructor(new Class[] {Animal.class}).newInstance(other);
             other.setWorld(this.world);
             try {
                 other.setPosition(position);

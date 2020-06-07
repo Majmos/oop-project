@@ -10,12 +10,12 @@ public class AiStateSleep implements IAiState {
     @Override
     public IAiState update() {
         animal.changeEnergy(20);
-        if(animal.getEnergy() >= 99) {
-            return new AiStatePop();
-        }
         if(animal.wantToMate) {
             return new AiStateCopulate(animal);
         } else if(animal.isHungry) {
+            return new AiStateLookForFood(animal);
+        }
+        if(animal.getEnergy() >= 100) {
             return new AiStateLookForFood(animal);
         }
         return null;

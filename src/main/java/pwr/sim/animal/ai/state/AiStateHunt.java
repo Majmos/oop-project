@@ -15,9 +15,6 @@ public class AiStateHunt implements IAiState {
 
     @Override
     public IAiState update() {
-        if (animal.getHunger() >= 100) {
-            return new AiStatePop();
-        }
         if(prey == null) {
             World world = animal.getWorld();
             int minimum = 100000;
@@ -38,6 +35,9 @@ public class AiStateHunt implements IAiState {
         if(animal.wantToMate) {
             return new AiStateCopulatePredator(animal);
         } else if(animal.isTired) {
+            return new AiStateSleepPredator(animal);
+        }
+        if (animal.getHunger() >= 100) {
             return new AiStateSleepPredator(animal);
         }
         if(animal.getPosition().distanceSquared(prey.getPosition()) <= 2) {
