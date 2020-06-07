@@ -10,9 +10,7 @@ import java.util.List;
 
 public class AiStateHunt implements IAiState {
     public AiStateHunt(Animal animal) {
-        World world = animal.getWorld();
         this.animal = animal;
-        this.animals = world.getAnimals();
     }
 
     @Override
@@ -21,8 +19,9 @@ public class AiStateHunt implements IAiState {
             return new AiStatePop();
         }
         if(prey == null) {
+            World world = animal.getWorld();
             int minimum = 100000;
-            for (Animal prey: animals) {
+            for (Animal prey: world.getAnimals()) {
                 if ((prey instanceof Antelope || prey instanceof Hippo) && prey.getHealth() > 0) {
                     int currentDistance = animal.getPosition().distanceSquared(prey.getPosition());
                     if(currentDistance < minimum) {
@@ -37,9 +36,9 @@ public class AiStateHunt implements IAiState {
         }
         animal.approach(prey.getPosition());
         if(animal.wantToMate) {
-            return new AiStateCopulate(animal);
+            return new AiStateCopulatePredator(animal);
         } else if(animal.isTired) {
-            return new AiStateSleep(animal);
+            return new AiStateSleepPredator(animal);
         }
         if(animal.getPosition().equals(prey.getPosition())) {
             prey.changeHealth(-100);
@@ -49,7 +48,6 @@ public class AiStateHunt implements IAiState {
         return null;
     }
 
-    private final List<Animal> animals;
     private final Animal animal;
     private Animal prey = null;
 }

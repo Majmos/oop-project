@@ -70,6 +70,10 @@ public abstract class Animal {
         nextPosition.move(x, y);
     }
 
+    public AiBehaviour getAiBehaviour() {
+        return this.aiBehaviour;
+    }
+
     public void setAiBehaviour(AiBehaviour aiBehaviour) {
         this.aiBehaviour = aiBehaviour;
     }

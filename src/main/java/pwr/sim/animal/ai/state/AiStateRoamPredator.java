@@ -2,8 +2,8 @@ package pwr.sim.animal.ai.state;
 
 import pwr.sim.animal.Animal;
 
-public class AiStateRoam implements IAiState {
-    public AiStateRoam(Animal animal) {
+public class AiStateRoamPredator implements IAiState {
+    public AiStateRoamPredator(Animal animal) {
         this.animal = animal;
     }
 
@@ -21,16 +21,16 @@ public class AiStateRoam implements IAiState {
         phase = (phase + 1)%4;
         numTicks++;
         if(animal.wantToMate) {
-            return new AiStateCopulate(animal);
+            return new AiStateCopulatePredator(animal);
         } else if(animal.isHungry) {
-            return new AiStateLookForFood(animal);
+            return new AiStateHunt(animal);
         } else if(animal.isTired) {
-            return new AiStateSleep(animal);
+            return new AiStateSleepPredator(animal);
         }
 
         if(numTicks >= 6) {
             numTicks = 0;
-            return new AiStateLookForFood(animal);
+            return new AiStateHunt(animal);
         }
 
         return null;

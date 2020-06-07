@@ -37,7 +37,11 @@ public class AiBehaviour {
     }
 
     public String debugInfo() {
-        return currentState.peek().debugInfo();
+        try {
+            return currentState.peek().debugInfo();
+        } catch(Exception e) {
+            return "Exception thrown";
+        }
     }
 
     protected final Stack<IAiState> currentState;

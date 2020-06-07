@@ -75,7 +75,6 @@ public class World {
     }
 
     public void populate(int numAnimals, AnimalType animalType) {
-        //AnimalType[] animalTypes = AnimalType.values();
         for(int i = 0; i < numAnimals; i++) {
             spawnAnimal(animalType);
         }

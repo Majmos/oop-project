@@ -8,7 +8,6 @@ import pwr.sim.tile.Tile;
 
 public class AiStateLookForFood implements IAiState {
     public AiStateLookForFood(Animal animal) {
-        this.world = animal.getWorld();
         this.animal = animal;
     }
 
@@ -18,6 +17,7 @@ public class AiStateLookForFood implements IAiState {
             return new AiStatePop();
         }
         Position2D position = animal.getPosition();
+        World world = animal.getWorld();
         int minimum = 100000;
         if(world.getTile(position) instanceof ForestTile && world.getTile(position).getFlora() > 0) {
             return new AiStateEatPlant(animal);
@@ -52,7 +52,6 @@ public class AiStateLookForFood implements IAiState {
         return null;
     }
 
-    private final World world;
     private final Animal animal;
     private Position2D destination;
 }
