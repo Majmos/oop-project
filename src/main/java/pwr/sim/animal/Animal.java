@@ -106,7 +106,7 @@ public abstract class Animal {
         int newx = this.position.getX() + x;
         int newy = this.position.getY() + y;
         Tile tile = this.world.getTile(newx, newy);
-        if(tile instanceof WaterTile) {
+        if(!canPassTile(tile)) {
             return null;
         }
         nextPosition.move(x, y);
@@ -130,7 +130,7 @@ public abstract class Animal {
     }
 
     public void setPosition(Position2D position) throws Exception {
-        if(this.world.getTile(position) instanceof WaterTile) {
+        if(!canPassTile(world.getTile(position))) {
             throw new Exception("Can't place " + this.getClass().toString() + " on water");
         }
         this.position = new Position2D(position);
@@ -167,6 +167,10 @@ public abstract class Animal {
 
     public void changeHealth(int shift) {
         this.health += shift;
+    }
+
+    public boolean canPassTile(Tile tile) {
+        return !(tile instanceof WaterTile);
     }
 
     public IAiState checkHungerAndEnergy() {
