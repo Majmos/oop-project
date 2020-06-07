@@ -58,6 +58,9 @@ public class World {
         for(Animal animal: this.animals) {
             animal.update();
         }
+        for(Tile tile: this.tiles) {
+            tile.changeFlora(3);
+        }
         for(Animal animal: this.animals) {
             animal.swap();
         }
@@ -72,7 +75,6 @@ public class World {
     }
 
     public void populate(int numAnimals, AnimalType animalType) {
-        //AnimalType[] animalTypes = AnimalType.values();
         for(int i = 0; i < numAnimals; i++) {
             spawnAnimal(animalType);
         }

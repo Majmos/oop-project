@@ -2,8 +2,8 @@ package pwr.sim.animal.ai.state;
 
 import pwr.sim.animal.Animal;
 
-public class AiStateSleep implements IAiState {
-    public AiStateSleep(Animal animal) {
+public class AiStateSleepPredator implements IAiState {
+    public AiStateSleepPredator(Animal animal) {
         this.animal = animal;
     }
 
@@ -11,12 +11,12 @@ public class AiStateSleep implements IAiState {
     public IAiState update() {
         animal.changeEnergy(20);
         if(animal.wantToMate) {
-            return new AiStateCopulate(animal);
+            return new AiStateCopulatePredator(animal);
         } else if(animal.isHungry) {
-            return new AiStateLookForFood(animal);
+            return new AiStateHunt(animal);
         }
         if(animal.getEnergy() >= 100) {
-            return new AiStateLookForFood(animal);
+            return new AiStateHunt(animal);
         }
         return null;
     }

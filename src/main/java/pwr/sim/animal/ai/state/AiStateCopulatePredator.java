@@ -4,8 +4,8 @@ import pwr.sim.World;
 import pwr.sim.animal.Animal;
 import pwr.sim.animal.AnimalFactory;
 
-public class AiStateCopulate implements IAiState {
-    public AiStateCopulate(Animal animal) {
+public class AiStateCopulatePredator implements IAiState {
+    public AiStateCopulatePredator(Animal animal) {
         this.animal = animal;
     }
 
@@ -29,17 +29,17 @@ public class AiStateCopulate implements IAiState {
             if (animal.getPosition().distanceSquared(mate.getPosition()) <= 2) {
                 mate = null;
                 world.toSpawn(animal, animal.getPosition());
-                return new AiStateSleep(animal);
+                return new AiStateSleepPredator(animal);
             }
         }
         if(animal.isHungry) {
-            return new AiStateLookForFood(animal);
+            return new AiStateHunt(animal);
         } else if(animal.isTired) {
-            return new AiStateSleep(animal);
+            return new AiStateSleepPredator(animal);
         }
         return null;
     }
-    
+
     private final Animal animal;
     private Animal mate;
 }
