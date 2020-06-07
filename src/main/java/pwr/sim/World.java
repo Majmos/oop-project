@@ -209,11 +209,19 @@ public class World {
         return this.animals;
     }
 
-    private Position2D newPosition(int x, int y) {
+    public Position2D newPosition(int x, int y) {
         if(x >= width || x < 0 || y >= height || y < 0) {
             return null;
         }
         return new Position2D(x, y, this);
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     private final AnimalFactory animalFactory;

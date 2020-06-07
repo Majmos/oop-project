@@ -1,5 +1,7 @@
 package pwr.sim;
 
+import java.util.Objects;
+
 public class Position2D implements Cloneable {
     public Position2D(int x, int y, World world) {
         this.x = x;
@@ -30,20 +32,37 @@ public class Position2D implements Cloneable {
 
     // probably dying in allocations but muh OOP
     public int distanceSquared(Position2D other) {
-        Position2D delta = delta(other);
+        Vector2D delta = delta(other);
         return delta.x * delta.x + delta.y * delta.y;
     }
 
-    public Position2D delta(Position2D other) {
+    public Vector2D delta(Position2D other) {
         int deltaX = other.getX() - x;
         int deltaY = other.getY() - y;
 
-        return new Position2D(deltaX, deltaY, world);
+        return new Vector2D(deltaX, deltaY);
     }
 
     @Override
     public String toString() {
         return String.format("{x: %d, y: %d}", x, y);
+    }
+
+    // why doesnt it just recursively test fields for equality, why the fuck do i have to do this
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Position2D)) {
+            return false;
+        }
+
+        Position2D o = (Position2D) obj;
+        return x == o.x && y == o.y && world == o.world;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, world);
     }
 
     public int getX() {
