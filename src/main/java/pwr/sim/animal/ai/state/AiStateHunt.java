@@ -40,7 +40,7 @@ public class AiStateHunt implements IAiState {
         } else if(animal.isTired) {
             return new AiStateSleepPredator(animal);
         }
-        if(animal.getPosition().equals(prey.getPosition())) {
+        if(animal.getPosition().distanceSquared(prey.getPosition()) <= 2) {
             prey.changeHealth(-100);
             prey = null;
             return new AiStateEatCorpse(animal);
