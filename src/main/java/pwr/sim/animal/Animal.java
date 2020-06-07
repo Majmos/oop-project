@@ -45,12 +45,32 @@ public abstract class Animal {
         } else if(x > 0) {
             stepX = 1;
         }
+        move(stepX, 0);
         if(y < 0) {
             stepY = -1;
         } else if(y > 0) {
             stepY = 1;
         }
-        move(stepX, stepY);
+        move(0, stepY);
+    }
+
+    public void evade(Position2D pos) {
+        Position2D other = position.delta(pos);
+        int x = other.getX();
+        int y = other.getY();
+        int stepX = 0, stepY = 0;
+        if(x < 0) {
+            stepX = 1;
+        } else if(x > 0) {
+            stepX = -1;
+        }
+        move(stepX, 0);
+        if(y < 0) {
+            stepY = 1;
+        } else if(y > 0) {
+            stepY = -1;
+        }
+        move(0, stepY);
     }
 
     // this method does the tile lookup twice:
