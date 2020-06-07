@@ -1,6 +1,5 @@
 package pwr.sim;
 
-import org.ietf.jgss.GSSName;
 import pwr.sim.animal.AnimalType;
 import pwr.sim.renderer.Renderer;
 
