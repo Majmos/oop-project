@@ -19,6 +19,12 @@ public class World {
         this.animalFactory = new AnimalFactory(this);
     }
 
+    /**
+     * Metoda wczytuje mape z pliku tekstowego.
+     * @param filename Nazwa pliku.
+     * @return World Zwraca świat w którym odbędzie się symulacja.
+     * @throws Exception Jeśli jest błąd we wczytywaniu pliku lub mapa nie jest kwadratowa.
+     */
     public static World loadFromFile(String filename) throws Exception {
         ArrayList<Tile> tileList = new ArrayList<>();
 
@@ -53,6 +59,9 @@ public class World {
         return new World(width, height, tiles);
     }
 
+    /**
+     * Aktualizuje zmiany.
+     */
     public void update() {
         for(Animal animal: this.animals) {
             animal.update();
@@ -73,12 +82,21 @@ public class World {
         }
     }
 
+    /**
+     * Tworzy daną ilość zwierząt danego gatunku.
+     * @param numAnimals Ilość zwierząt którą metoda ma stworzyć.
+     * @param animalType Typ zwierzęcia.
+     */
     public void populate(int numAnimals, AnimalType animalType) {
         for(int i = 0; i < numAnimals; i++) {
             spawnAnimal(animalType);
         }
     }
 
+    /**
+     * Nadaje pozycje na mapie zwierzęciu danego gatunku.
+     * @param animalType Typ zwierzęcia.
+     */
     private void spawnAnimal(AnimalType animalType) {
         Random rng = new Random();
         Animal animal = null;
@@ -88,6 +106,13 @@ public class World {
             animal = spawnAnimal(animalType, pos);
         }
     }
+
+    /**
+     * Tworzy zwierze danego gatunku na danej pozycji.
+     * @param animalType Typ zwierzęcia.
+     * @param position Pozycja zwierzęcia.
+     * @return Animal Zwraca zwierze.
+     */
     private Animal spawnAnimal(AnimalType animalType, Position2D position) {
         Animal animal = this.animalFactory.createAnimal(animalType, position);
         if(animal == null) {
@@ -102,6 +127,11 @@ public class World {
         this.animals.add(other);
     }
 
+    /**
+     * Metoda tworzy zwierze danego gatunku na danej pozycji i dodaje zwierze do listy zwierząt do dodania.
+     * @param animal Obiekt zwierzęcia danego gatunku.
+     * @param position Pozycja zwierzęcia.
+     */
     public void toSpawn(Animal animal, Position2D position) {
         Animal other = this.animalFactory.createAnimal(animal, position);
         this.toSpawn.add(other);
@@ -111,6 +141,10 @@ public class World {
         this.animals.addAll(this.toSpawn);
     }
 
+    /**
+     * Metoda dadaje zwierze do listy zwierząt do usunięcia.
+     * @param animal Zwierze do usunięcia.
+     */
     public void toRemove(Animal animal) {
         this.toRemove.add(animal);
     }
@@ -119,6 +153,9 @@ public class World {
         this.animals.removeAll(this.toRemove);
     }
 
+    /**
+     * Metoda wyświetla mapę oraz zwierzęta na niej, a także statystyki zwierząt.
+     */
     public void draw() {
         Renderer.clearScreen();
         Renderer.setCursorPosition(1,1);
@@ -137,6 +174,10 @@ public class World {
         Renderer.setCursorPosition(0, height + 1);
     }
 
+    /**
+     * Metoda wyświetla dane zwierze na mapie z kolorem tła komórki na której się aktualnie znajduje.
+     * @param animal Zwierze do wyświetlenia.
+     */
     public void drawAnimal(Animal animal) {
         Position2D position = animal.getPosition();
 
@@ -149,6 +190,12 @@ public class World {
         Renderer.drawColouredChar(c, 231, tileBackground);
     }
 
+    /**
+     * Metoda zwraca komórke o danej pozycji.
+     * @param x Współżędna x.
+     * @param y Współżędna y.
+     * @return Tile Komórka o pozycji x i y.
+     */
     public Tile getTile(int x, int y) {
         if(x >= width || x < 0 || y >= height || y < 0) {
             return null;
@@ -156,17 +203,22 @@ public class World {
         return tiles[y * width + x];
     }
 
+    /**
+     * Metoda zwraca komórke o danej pozycji.
+     * @param position Pozycja komórki.
+     * @return Tile Komórka o pozycji position.
+     */
     public Tile getTile(Position2D position) {
         int x = position.getX();
         int y = position.getY();
         return getTile(x, y);
     }
 
-    public void breed(Animal animal) {
-        Position2D pos = new Position2D(animal.getPosition());
-        spawnAnimal(animal, pos);
-    }
-
+    /**
+     * Metoda znajduje najbliższą komórke lasu na której jest roślinność.
+     * @param position Pozycja zwierzęcia, które szuka pożywienia.
+     * @return Position2D Zwraca pozycje szukanej komórki.
+     */
     public Position2D findNearestPlants(Position2D position) {
         boolean[] visitedMap = new boolean[width * height];
         Queue<Position2D> toVisit = new ArrayDeque<>();
@@ -204,6 +256,12 @@ public class World {
         return this.animals;
     }
 
+    /**
+     * Tworzy nową pozycje w świecie.
+     * @param x Współżędna x.
+     * @param y Współżędna y.
+     * @return Position2D Zwraca nową pozycje.
+     */
     public Position2D newPosition(int x, int y) {
         if(x >= width || x < 0 || y >= height || y < 0) {
             return null;
