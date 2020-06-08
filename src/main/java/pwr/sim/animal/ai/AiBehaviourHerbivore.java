@@ -1,13 +1,8 @@
 package pwr.sim.animal.ai;
 
 import pwr.sim.World;
-import pwr.sim.animal.Animal;
-import pwr.sim.animal.Crocodile;
-import pwr.sim.animal.Lion;
-import pwr.sim.animal.Wolf;
-import pwr.sim.animal.ai.state.AiStateEvade;
-import pwr.sim.animal.ai.state.AiStateLookForFood;
-import pwr.sim.animal.ai.state.IAiState;
+import pwr.sim.animal.*;
+import pwr.sim.animal.ai.state.*;
 
 public class AiBehaviourHerbivore extends AiBehaviour {
     public AiBehaviourHerbivore(Animal animal) {
@@ -16,6 +11,13 @@ public class AiBehaviourHerbivore extends AiBehaviour {
 
     @Override
     public void update() {
+        if(animal.wantToMate) {
+            currentState = new AiStateCopulate(animal);
+        } else if(animal.isHungry) {
+            currentState = new AiStateLookForFood(animal);
+        } else if(animal.isTired) {
+            currentState = new AiStateSleep(animal);
+        }
         World world = animal.getWorld();
         int minimum = 35;
         boolean isInDanger = false;

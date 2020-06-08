@@ -15,16 +15,14 @@ public class AiStateHunt implements IAiState {
 
     @Override
     public IAiState update() {
-        if(prey == null) {
-            World world = animal.getWorld();
-            int minimum = 100000;
-            for (Animal prey: world.getAnimals()) {
-                if ((prey instanceof Antelope || prey instanceof Hippo) && prey.getHealth() > 0) {
-                    int currentDistance = animal.getPosition().distanceSquared(prey.getPosition());
-                    if(currentDistance < minimum) {
-                        minimum = currentDistance;
-                        this.prey = prey;
-                    }
+        World world = animal.getWorld();
+        int minimum = 100000;
+        for (Animal prey: world.getAnimals()) {
+            if ((prey instanceof Antelope || prey instanceof Hippo) && prey.getHealth() > 0) {
+                int currentDistance = animal.getPosition().distanceSquared(prey.getPosition());
+                if(currentDistance < minimum) {
+                    minimum = currentDistance;
+                    this.prey = prey;
                 }
             }
         }
@@ -32,18 +30,15 @@ public class AiStateHunt implements IAiState {
             return null;
         }
         animal.approach(prey.getPosition());
-        if(animal.wantToMate) {
-            return new AiStateCopulatePredator(animal);
-        } else if(animal.isTired) {
-            return new AiStateSleepPredator(animal);
-        }
         if (animal.getHunger() >= 100) {
-            return new AiStateSleepPredator(animal);
+            return new AiStateSleep(animal);
         }
         if(animal.getPosition().distanceSquared(prey.getPosition()) <= 2) {
-            prey.changeHealth(-100);
-            prey = null;
-            return new AiStateEatCorpse(animal);
+            prey.changeHealth(-animal.getStrength());
+            if(prey.getHealth() <= 0) {
+                prey = null;
+                return new AiStateEatCorpse(animal);
+            }
         }
         return null;
     }

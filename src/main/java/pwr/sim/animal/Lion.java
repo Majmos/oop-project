@@ -5,4 +5,9 @@ public class Lion extends Animal {
     public char getAnimalChar() {
         return 'L';
     }
+
+    @Override
+    public int getStrength() {
+        return 80;
+    }
 }

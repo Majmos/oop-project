@@ -16,11 +16,6 @@ public class AiStateEatCorpse implements IAiState {
         }
         tile.changeFlesh(-5);
         animal.changeHunger(40);
-        if(animal.wantToMate) {
-            return new AiStateCopulatePredator(animal);
-        } else if(animal.isTired) {
-            return new AiStateSleepPredator(animal);
-        }
         return null;
     }
 

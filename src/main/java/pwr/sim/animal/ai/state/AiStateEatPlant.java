@@ -15,11 +15,6 @@ public class AiStateEatPlant implements IAiState {
         }
         tile.changeFlora(-10);
         animal.changeHunger(20);
-        if(animal.wantToMate) {
-            return new AiStateCopulate(animal);
-        } else if(animal.isTired) {
-            return new AiStateSleep(animal);
-        }
         return null;
     }
 

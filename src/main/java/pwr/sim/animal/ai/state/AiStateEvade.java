@@ -12,15 +12,6 @@ public class AiStateEvade implements IAiState {
     @Override
     public IAiState update() {
         animal.evade(predator.getPosition());
-        int currentDistance = animal.getPosition().distanceSquared(predator.getPosition());
-        if(currentDistance > 35) {
-            if (animal.wantToMate) {
-                return new AiStateCopulate(animal);
-            } else if (animal.isHungry) {
-                return new AiStateLookForFood(animal);
-            }
-            return new AiStateSleep(animal);
-        }
         return null;
     }
 

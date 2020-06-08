@@ -32,11 +32,6 @@ public class AiStateCopulate implements IAiState {
                 return new AiStateSleep(animal);
             }
         }
-        if(animal.isHungry) {
-            return new AiStateLookForFood(animal);
-        } else if(animal.isTired) {
-            return new AiStateSleep(animal);
-        }
         return null;
     }
     
