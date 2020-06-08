@@ -5,9 +5,8 @@ import pwr.sim.renderer.Renderer;
 import pwr.sim.tile.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class World {
     public World(int width, int height, Tile[] tiles) {
@@ -168,12 +167,56 @@ public class World {
         spawnAnimal(animal, pos);
     }
 
+    public Position2D findNearestPlants(Position2D position) {
+        boolean[] visitedMap = new boolean[width * height];
+        Queue<Position2D> toVisit = new ArrayDeque<>();
+        toVisit.add(position);
+
+        while(toVisit.peek() != null) {
+            Position2D current = toVisit.poll();
+            int x = current.getX();
+            int y = current.getY();
+
+            visitedMap[y * width + x] = true;
+
+            if (getTile(current).getFlora() > 15) {
+                return current;
+            }
+
+            Stream.of(
+                    newPosition(x + 1, y),
+                    newPosition(x, y + 1),
+                    newPosition(x - 1, y),
+                    newPosition(x, y - 1)
+            )
+                .filter(Objects::nonNull)
+                .filter((Position2D p) -> {
+                    int i = p.getY() * width + p.getX();
+                    return !visitedMap[i];
+                })
+                .forEach(toVisit::add);
+
+        }
+        return null;
+    }
+
     public List<Animal> getAnimals() {
         return this.animals;
     }
 
-    private Position2D newPosition(int x, int y) {
+    public Position2D newPosition(int x, int y) {
+        if(x >= width || x < 0 || y >= height || y < 0) {
+            return null;
+        }
         return new Position2D(x, y, this);
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     private final AnimalFactory animalFactory;
