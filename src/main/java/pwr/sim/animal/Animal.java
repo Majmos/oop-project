@@ -15,7 +15,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Klasa przechowująca statystyki i metody sumulujące jedno zwierze.
+ */
 public abstract class Animal {
+    /**
+     * Metoda zmniejsza energie oraz najedzenie zwierzęcia. Sprawdza czy zwierze jest głodne lub zmęczone
+     * oraz czy jest dostatecznie najedzone oraz wypoczęte aby kopulować, a także sprawdza czy zwierze jest
+     * martwe. Jeśli zwierze jest martwe to zostanie usunięte w następnym kroku i pozostawi po sobie mięso.
+     */
     public void update() {
         changeHunger(-1);
         changeEnergy(-2);
@@ -23,11 +31,11 @@ public abstract class Animal {
             wantToMate = true;
             isHungry = false;
             isTired = false;
-        } else if(hunger < 35 && hunger < energy) {
+        } else if(hunger < 45 && hunger < energy) {
             isHungry = true;
             isTired = false;
             wantToMate = false;
-        } else if(energy < 35) {
+        } else if(energy < 45) {
             isTired = true;
             isHungry = false;
             wantToMate = false;
@@ -40,6 +48,10 @@ public abstract class Animal {
         aiBehaviour.update();
     }
 
+    /**
+     * Metoda pobiera lokacje jako parametr i robi jeden krok w jej kierunku. Nie robi kroków diagonalnych.
+     * @param dest Określa pozycje na mapie.
+     */
     public void approach(Position2D dest) {
         boolean pathFound = false;
         boolean[] closed = new boolean[world.getWidth() * world.getHeight()];
@@ -116,6 +128,11 @@ public abstract class Animal {
         move(delta.x, delta.y);
     }
 
+    /**
+     * Metoda pobiera lokacje jako parametr i robi jeden krok w przeciwnym do niej kierunku.
+     * Nie robi kroków diagonalnych.
+     * @param pos Określa pozycje na mapie.
+     */
     public void evade(Position2D pos) {
         Vector2D other = position.delta(pos);
         int x = other.x;
@@ -153,7 +170,15 @@ public abstract class Animal {
     // 1. get the desired tile, return null if outside bounds
     // 2. move to this tile if tile != null AND is not a water tile without the second lookup
     // TODO make move method not check if tile is valid twice
-    public Position2D move(int x, int y) {
+
+    /**
+     * Metoda zmienia pozycje zwierzęcia o zadane wartości. Nowa pozycja będzie widoczna dla innych
+     * zwierząt dopiero po wywołaniu metody swap.
+     * @param x Określa ruch w prawo i w lewo.
+     * @param y Określa ruch w dół i w góre.
+     * @return Position2D Zwraca nową pozycje zwierzęcia.
+     */
+    protected Position2D move(int x, int y) {
         int newx = this.position.getX() + x;
         int newy = this.position.getY() + y;
         Tile tile = this.world.getTile(newx, newy);
@@ -172,6 +197,9 @@ public abstract class Animal {
         this.aiBehaviour = aiBehaviour;
     }
 
+    /**
+     * Metoda odpowiada za narysowanie zwierzęcia na mapie.
+     */
     public void draw() {
         world.drawAnimal(this);
     }
@@ -196,12 +224,20 @@ public abstract class Animal {
         this.world = world;
     }
 
+    /**
+     * W zależności od gatunku zwierzęcia zwraca jakim znakiem należy narysować zwierze na mapie.
+     * @return char Zwraca znak.
+     */
     abstract public char getAnimalChar();
 
     public int getEnergy() {
         return this.energy;
     }
 
+    /**
+     * Zmienia energie o zadaną wartość.
+     * @param shift Parametr określający wielkość zmiany.
+     */
     public void changeEnergy(int shift) {
         this.energy += shift;
     }
@@ -210,12 +246,20 @@ public abstract class Animal {
         return this.hunger;
     }
 
+    /**
+     * Zmienia najedzenie o zadaną wartość.
+     * @param shift Parametr określający wielkość zmiany.
+     */
     public void changeHunger(int shift) {
         this.hunger += shift;
     }
 
     public int getHealth() { return this.health; }
 
+    /**
+     * Zmienia wytrzymałość o zadaną wartość.
+     * @param shift Parametr określający wielkość zmiany.
+     */
     public void changeHealth(int shift) {
         this.health += shift;
     }
@@ -233,15 +277,22 @@ public abstract class Animal {
         }
         return null;
     }
-
+  
     public int getStrength() {
         return 10;
     }
 
+    /**
+     * Metoda aktualizuje pozycje jeżeli została ona zmieniona.
+     */
     public void swap() {
         position.setPosition(nextPosition.getX(), nextPosition.getY());
     }
 
+    /**
+     * Zwraca String statusu zwierzęcia.
+     * @return String Status zwierzęcia.
+     */
     public String getStringInfo() {
         return String.format("%s, HP: %d, HUN: %d, ENG: %d, POS: %s, STATE: %s",
             this.getClass().getSimpleName(),

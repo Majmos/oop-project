@@ -15,6 +15,7 @@ public class AiStateSleep implements IAiState {
     /**
      * Metoda odpowiada za zwiększenie energii zwierzęcia jak i odrodzenie punktów życia.
      * Gdy zwierze jest wypoczęte to zmienia stan.
+     * @return IAiState Zwraca nowy stan lub null aby pozostać w obecnym stanie.
      */
     @Override
     public IAiState update() {
