@@ -18,11 +18,11 @@ public class AiStateEatCorpse implements IAiState {
     @Override
     public IAiState update() {
         Tile tile = animal.getWorld().getTile(animal.getPosition());
+        tile.changeFlesh(-5);
+        animal.changeHunger(40);
         if(tile.getFlesh() <= 0 || animal.getHunger() >= 100) {
             return new AiStateHunt(animal);
         }
-        tile.changeFlesh(-5);
-        animal.changeHunger(40);
         return null;
     }
 

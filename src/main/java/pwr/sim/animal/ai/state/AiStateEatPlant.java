@@ -18,11 +18,11 @@ public class AiStateEatPlant implements IAiState {
     @Override
     public IAiState update() {
         Tile tile = animal.getWorld().getTile(animal.getPosition());
+        tile.changeFlora(-10);
+        animal.changeHunger(20);
         if(tile.getFlora() <= 0 || animal.getHunger() >= 100) {
             return new AiStateLookForFood(animal);
         }
-        tile.changeFlora(-10);
-        animal.changeHunger(20);
         return null;
     }
 
