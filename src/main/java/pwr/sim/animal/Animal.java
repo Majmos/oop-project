@@ -23,11 +23,11 @@ public abstract class Animal {
             wantToMate = true;
             isHungry = false;
             isTired = false;
-        } else if(hunger < 35 && hunger < energy) {
+        } else if(hunger < 50 && hunger < energy) {
             isHungry = true;
             isTired = false;
             wantToMate = false;
-        } else if(energy < 35) {
+        } else if(energy < 50) {
             isTired = true;
             isHungry = false;
             wantToMate = false;
