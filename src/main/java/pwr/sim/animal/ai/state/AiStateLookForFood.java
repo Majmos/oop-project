@@ -6,11 +6,18 @@ import pwr.sim.animal.Animal;
 import pwr.sim.tile.ForestTile;
 import pwr.sim.tile.Tile;
 
+/**
+ * Stan w którym zwierze szuka jedzenia.
+ */
 public class AiStateLookForFood implements IAiState {
     public AiStateLookForFood(Animal animal) {
         this.animal = animal;
     }
 
+    /**
+     * Metoda odpowiadająca za znalezienie komórki z pożywieniem oraz kierowaniem się ku niemu.
+     * Gdy zwierze dojdzie do komórki z pożywieniem to przechodzi w stan jedzenia i gdy jest juz najedzone to zmienia stan.
+     */
     @Override
     public IAiState update() {
         Position2D position = animal.getPosition();

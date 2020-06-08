@@ -6,13 +6,18 @@ import pwr.sim.animal.Crocodile;
 import pwr.sim.animal.Lion;
 import pwr.sim.animal.Wolf;
 import pwr.sim.animal.ai.state.*;
-
+/**
+ * Klasa odpowiedzialna za zmianę stanów drapieżników.
+ */
 public class AiBehaviourPredator extends AiBehaviour {
     public AiBehaviourPredator(Animal animal) {
         super(animal);
         currentState = new AiStateHunt(this.animal);
     }
 
+    /**
+     * Metoda zmienia stan zwierzęcia w zależności od aktualnych statystyk.
+     */
     @Override
     public void update() {
         if(animal.wantToMate) {

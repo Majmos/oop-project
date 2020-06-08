@@ -3,12 +3,17 @@ package pwr.sim.animal.ai;
 import pwr.sim.World;
 import pwr.sim.animal.*;
 import pwr.sim.animal.ai.state.*;
-
+/**
+ * Klasa odpowiedzialna za zmiane stanów zwierząt roślinożernych.
+ */
 public class AiBehaviourHerbivore extends AiBehaviour {
     public AiBehaviourHerbivore(Animal animal) {
         super(animal);
     }
 
+    /**
+     * Metoda zmienia stan zwierzęcia w zależności od aktualnych statystyk i otoczenia.
+     */
     @Override
     public void update() {
         if(animal.wantToMate) {

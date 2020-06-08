@@ -4,11 +4,18 @@ import pwr.sim.animal.Animal;
 import pwr.sim.animal.Antelope;
 import pwr.sim.animal.Hippo;
 
+/**
+ * Stan snu zwierzęcia.
+ */
 public class AiStateSleep implements IAiState {
     public AiStateSleep(Animal animal) {
         this.animal = animal;
     }
 
+    /**
+     * Metoda odpowiada za zwiększenie energii zwierzęcia jak i odrodzenie punktów życia.
+     * Gdy zwierze jest wypoczęte to zmienia stan.
+     */
     @Override
     public IAiState update() {
         animal.changeEnergy(20);

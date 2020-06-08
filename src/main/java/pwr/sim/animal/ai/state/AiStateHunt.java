@@ -8,11 +8,19 @@ import pwr.sim.animal.Hippo;
 
 import java.util.List;
 
+/**
+ * Stan w którym zwierze poluje.
+ */
 public class AiStateHunt implements IAiState {
     public AiStateHunt(Animal animal) {
         this.animal = animal;
     }
 
+    /**
+     * Metoda jest odpowiedzialna za znaleźenie najbliższego roślinożercy oraz kierowanie się ku niemu.
+     * Gdy zwierze dojdzie do ofiary to atakuje, jeśli zabije zwierze to przechodzi w stan jedzenia i gdy
+     * jest najedzone to zmienia stan.
+     */
     @Override
     public IAiState update() {
         World world = animal.getWorld();

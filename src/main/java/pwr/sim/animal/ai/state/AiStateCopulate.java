@@ -4,11 +4,19 @@ import pwr.sim.World;
 import pwr.sim.animal.Animal;
 import pwr.sim.animal.AnimalFactory;
 
+/**
+ * Stan kopulacji.
+ */
 public class AiStateCopulate implements IAiState {
     public AiStateCopulate(Animal animal) {
         this.animal = animal;
     }
 
+    /**
+     * Metoda odpowiada za znaleźenie partnera tego samego gatunku oraz kierowanie się ku niemu.
+     * Gdy zwierze dojdzie do partnera to utworzy się nowy osobnik tego samego gatunku i zwierze
+     * zmieni stan.
+     */
     @Override
     public IAiState update() {
         World world = animal.getWorld();
