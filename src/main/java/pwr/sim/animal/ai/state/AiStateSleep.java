@@ -18,7 +18,9 @@ public class AiStateSleep implements IAiState {
      */
     @Override
     public IAiState update() {
-        animal.changeEnergy(20);
+        if(animal.getEnergy() < 100) {
+            animal.changeEnergy(20);
+        }
         if(animal.getHealth() < 100) {
             animal.changeHealth(10);
         }
