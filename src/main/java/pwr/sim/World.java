@@ -5,9 +5,8 @@ import pwr.sim.renderer.Renderer;
 import pwr.sim.tile.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class World {
     public World(int width, int height, Tile[] tiles) {
@@ -170,37 +169,33 @@ public class World {
 
     public Position2D findNearestPlants(Position2D position) {
         boolean[] visitedMap = new boolean[width * height];
+        Queue<Position2D> toVisit = new ArrayDeque<>();
+        toVisit.add(position);
 
-        return bfsPlants(position, visitedMap);
-    }
+        while(toVisit.peek() != null) {
+            Position2D current = toVisit.poll();
+            int x = current.getX();
+            int y = current.getY();
 
-    private Position2D bfsPlants(Position2D pos, boolean[] visitedMap) {
-        int x = pos.getX();
-        int y = pos.getY();
+            visitedMap[y * width + x] = true;
 
-        visitedMap[y * width + x] = true;
-
-        if(getTile(pos).getFlora() > 20) {
-            return pos;
-        }
-
-        Position2D[] neighbours = new Position2D[] {
-                newPosition(x+1, y),
-                newPosition(x, y+1),
-                newPosition(x-1, y),
-                newPosition(x, y-1)
-        };
-
-        for(Position2D neighbour: neighbours) {
-            if(neighbour == null) {
-                continue;
-            }
-            int i = neighbour.getY() * width + neighbour.getX();
-            if(visitedMap[i]) {
-                continue;
+            if (getTile(current).getFlora() > 15) {
+                return current;
             }
 
-            bfsPlants(neighbour, visitedMap);
+            Stream.of(
+                    newPosition(x + 1, y),
+                    newPosition(x, y + 1),
+                    newPosition(x - 1, y),
+                    newPosition(x, y - 1)
+            )
+                .filter(Objects::nonNull)
+                .filter((Position2D p) -> {
+                    int i = p.getY() * width + p.getX();
+                    return !visitedMap[i];
+                })
+                .forEach(toVisit::add);
+
         }
         return null;
     }
