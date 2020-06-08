@@ -1,10 +1,18 @@
 package pwr.sim.tile;
 
+/**
+ * Komórka siatki świata symulacji. Zawiera rośliny oraz padlinę, mogą na niej przebywać zwierzęta.
+ */
 public abstract class Tile {
-    public void draw() {
-        System.out.print('-');
-    }
+    /**
+     * Rysuje komórkę na aktualnej pozycji kursora.
+     */
+    public abstract void draw();
 
+    /**
+     * Zwraca kolor komórki w formacie 8-bitowego kodu koloru ANSI. Różne typy komórek mają różne kolory.
+     * @return kolor komórki w formacie 8-bitowego kodu koloru ANSI
+     */
     public abstract int getColor();
 
     public int getFlora() {
