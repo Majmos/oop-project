@@ -29,18 +29,7 @@ public class AiStateLookForFood implements IAiState {
             return new AiStateEatPlant(animal);
         }
         if(destination == null) {
-            for (int y = position.getY() - 5; y < position.getY() + 5; y++) {
-                for (int x = position.getX() - 5; x < position.getX() + 5; x++) {
-                    Tile tile = world.getTile(x, y);
-                    if (tile instanceof ForestTile && tile.getFlora() > 0) {
-                        int currentDistance = animal.getPosition().distanceSquared(new Position2D(x, y, world));
-                        if (currentDistance < minimum) {
-                            minimum = currentDistance;
-                            destination = new Position2D(x, y, world);
-                        }
-                    }
-                }
-            }
+            destination = world.findNearestPlants(animal.getPosition());
         }
         if(destination != null) {
             animal.approach(destination);

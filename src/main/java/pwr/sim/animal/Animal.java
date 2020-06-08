@@ -1,6 +1,8 @@
 package pwr.sim.animal;
 
+import pwr.sim.Node;
 import pwr.sim.Position2D;
+import pwr.sim.Vector2D;
 import pwr.sim.World;
 import pwr.sim.animal.ai.AiBehaviour;
 import pwr.sim.animal.ai.state.AiStateLookForFood;
@@ -8,6 +10,10 @@ import pwr.sim.animal.ai.state.AiStateSleep;
 import pwr.sim.animal.ai.state.IAiState;
 import pwr.sim.tile.Tile;
 import pwr.sim.tile.WaterTile;
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Klasa przechowująca statystyki i metody sumulujące jedno zwierze.
@@ -46,35 +52,80 @@ public abstract class Animal {
      * Metoda pobiera lokacje jako parametr i robi jeden krok w jej kierunku. Nie robi kroków diagonalnych.
      * @param dest Określa pozycje na mapie.
      */
-    // code object oriented but introduces unnecessary allocations
     public void approach(Position2D dest) {
-        Position2D diff = position.delta(dest);
-        int x = diff.getX();
-        int y = diff.getY();
-        int stepX = 0, stepY = 0;
-        if(x < 0) {
-            stepX = -1;
-        } else if(x > 0) {
-            stepX = 1;
-        }
-        if(y < 0) {
-            stepY = -1;
-        } else if(y > 0) {
-            stepY = 1;
-        }
-        if(Math.abs(x) >= Math.abs(y)) {
-            Position2D other = move(stepX, 0);
+        boolean pathFound = false;
+        boolean[] closed = new boolean[world.getWidth() * world.getHeight()];
+        HashMap<Position2D, Node> grid = new HashMap<>();
+        Node finalPath = null;
 
-            if (other == null) {
-                move(0, stepY);
-            }
-        } else {
-            Position2D other = move(0, stepY);
+        PriorityQueue<Node> open = new PriorityQueue<>(
+            Comparator.comparingInt((Node src) -> src.finalCost));
 
-            if (other == null) {
-                move(stepX, 0);
+        Node start = new Node(new Position2D(position), null);
+        start.gCost = 0;
+        start.finalCost = position.distanceSquared(dest);
+        open.add(start);
+
+
+        // i wanna die
+        while(!pathFound) {
+            Node current = open.poll();
+            if(current == null) {
+                break;
             }
+            Position2D currentPos = current.getPosition();
+            closed[currentPos.getY() * world.getWidth() + currentPos.getX()] = true;
+            if(currentPos.distanceSquared(dest) == 0) {
+                pathFound = true;
+                finalPath = current;
+            }
+
+            int x = currentPos.getX();
+            int y = currentPos.getY();
+
+            List<Position2D> neighbours = Stream.of(
+                world.newPosition(x+1, y),
+                world.newPosition(x, y+1),
+                world.newPosition(x-1, y),
+                world.newPosition(x, y-1)
+            ).filter(Objects::nonNull)
+                .filter((Position2D pos) -> canPassTile(world.getTile(pos)))
+                .filter((Position2D pos) -> !closed[pos.getY() * world.getWidth() + pos.getX()])
+                .collect(Collectors.toList());
+
+            neighbours.forEach((Position2D pos) -> {
+                int currentCost = current.gCost + 1;
+                Node n = grid.get(pos);
+                if(n == null) {
+                    n = new Node(pos, current);
+                    n.gCost = currentCost;
+                    n.finalCost = n.gCost + pos.distanceSquared(dest);
+                    grid.put(pos, n);
+                }
+
+                if(currentCost < n.gCost || !open.contains(n)) {
+                    n.gCost = currentCost;
+                    n.finalCost = n.gCost + pos.distanceSquared(dest);
+                    n.prev = current;
+
+                    if(!open.contains(n)) {
+                        open.add(n);
+                    }
+                }
+            });
         }
+        if(!pathFound) {
+            return;
+        }
+
+        while(finalPath.prev != null) {
+            if(finalPath.prev.prev == null) {
+                break;
+            }
+            finalPath = finalPath.prev;
+        }
+        Vector2D delta = position.delta(finalPath.position);
+        move(delta.x, delta.y);
     }
 
     /**
@@ -83,9 +134,9 @@ public abstract class Animal {
      * @param pos Określa pozycje na mapie.
      */
     public void evade(Position2D pos) {
-        Position2D other = position.delta(pos);
-        int x = other.getX();
-        int y = other.getY();
+        Vector2D other = position.delta(pos);
+        int x = other.x;
+        int y = other.y;
         int stepX = 0, stepY = 0;
         if(x < 0) {
             stepX = 1;
@@ -131,7 +182,7 @@ public abstract class Animal {
         int newx = this.position.getX() + x;
         int newy = this.position.getY() + y;
         Tile tile = this.world.getTile(newx, newy);
-        if(tile instanceof WaterTile) {
+        if(!canPassTile(tile)) {
             return null;
         }
         nextPosition.move(x, y);
@@ -158,7 +209,7 @@ public abstract class Animal {
     }
 
     public void setPosition(Position2D position) throws Exception {
-        if(this.world.getTile(position) instanceof WaterTile) {
+        if(!canPassTile(world.getTile(position))) {
             throw new Exception("Can't place " + this.getClass().toString() + " on water");
         }
         this.position = new Position2D(position);
@@ -213,6 +264,20 @@ public abstract class Animal {
         this.health += shift;
     }
 
+    public boolean canPassTile(Tile tile) {
+        return !(tile instanceof WaterTile);
+    }
+
+    public IAiState checkHungerAndEnergy() {
+        if(hunger < 35 && hunger < energy) {
+            return new AiStateLookForFood(this);
+        }
+        if(energy < 35) {
+            return new AiStateSleep(this);
+        }
+        return null;
+    }
+  
     public int getStrength() {
         return 10;
     }
