@@ -11,8 +11,8 @@ import pwr.sim.tile.WaterTile;
 
 public abstract class Animal {
     public void update() {
-        changeHunger(-3);
-        changeEnergy(-3);
+        changeHunger(-1);
+        changeEnergy(-2);
         if(hunger > 80 && energy > 80) {
             wantToMate = true;
             isHungry = false;
@@ -45,13 +45,24 @@ public abstract class Animal {
         } else if(x > 0) {
             stepX = 1;
         }
-        move(stepX, 0);
         if(y < 0) {
             stepY = -1;
         } else if(y > 0) {
             stepY = 1;
         }
-        move(0, stepY);
+        if(Math.abs(x) >= Math.abs(y)) {
+            Position2D other = move(stepX, 0);
+
+            if (other == null) {
+                move(0, stepY);
+            }
+        } else {
+            Position2D other = move(0, stepY);
+
+            if (other == null) {
+                move(stepX, 0);
+            }
+        }
     }
 
     public void evade(Position2D pos) {
@@ -64,13 +75,24 @@ public abstract class Animal {
         } else if(x > 0) {
             stepX = -1;
         }
-        move(stepX, 0);
         if(y < 0) {
             stepY = 1;
         } else if(y > 0) {
             stepY = -1;
         }
-        move(0, stepY);
+        if(Math.abs(x) >= Math.abs(y)) {
+            Position2D temp = move(stepX, 0);
+
+            if (temp == null) {
+                move(0, stepY);
+            }
+        } else {
+            Position2D temp = move(0, stepY);
+
+            if (temp == null) {
+                move(stepX, 0);
+            }
+        }
     }
 
     // this method does the tile lookup twice:
@@ -80,14 +102,15 @@ public abstract class Animal {
     // 1. get the desired tile, return null if outside bounds
     // 2. move to this tile if tile != null AND is not a water tile without the second lookup
     // TODO make move method not check if tile is valid twice
-    public void move(int x, int y) {
+    public Position2D move(int x, int y) {
         int newx = this.position.getX() + x;
         int newy = this.position.getY() + y;
         Tile tile = this.world.getTile(newx, newy);
         if(tile instanceof WaterTile) {
-            return;
+            return null;
         }
         nextPosition.move(x, y);
+        return nextPosition;
     }
 
     public AiBehaviour getAiBehaviour() {
@@ -154,6 +177,10 @@ public abstract class Animal {
             return new AiStateSleep(this);
         }
         return null;
+    }
+
+    public int getStrength() {
+        return 10;
     }
 
     public void swap() {

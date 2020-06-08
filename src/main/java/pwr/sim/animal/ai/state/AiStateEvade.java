@@ -3,24 +3,22 @@ package pwr.sim.animal.ai.state;
 import pwr.sim.World;
 import pwr.sim.animal.*;
 
+/**
+ * Stan ucieczki przed drapieżnikami.
+ */
 public class AiStateEvade implements IAiState {
     public AiStateEvade(Animal animal, Animal predator) {
         this.animal = animal;
         this.predator = predator;
     }
 
+    /**
+     * Metoda odpowiada za oddalanie się od najbliższego drapieżnika. Zwirze ucieka dopóki nie znajdzie
+     * się w bezpiecznym dystansie od drapieżnika.
+     */
     @Override
     public IAiState update() {
         animal.evade(predator.getPosition());
-        int currentDistance = animal.getPosition().distanceSquared(predator.getPosition());
-        if(currentDistance > 35) {
-            if (animal.wantToMate) {
-                return new AiStateCopulate(animal);
-            } else if (animal.isHungry) {
-                return new AiStateLookForFood(animal);
-            }
-            return new AiStateSleep(animal);
-        }
         return null;
     }
 

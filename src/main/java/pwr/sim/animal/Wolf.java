@@ -5,4 +5,9 @@ public class Wolf extends Animal {
     public char getAnimalChar() {
         return 'W';
     }
+
+    @Override
+    public int getStrength() {
+        return 60;
+    }
 }

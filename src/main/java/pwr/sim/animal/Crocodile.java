@@ -6,14 +6,15 @@ import pwr.sim.tile.Tile;
 
 public class Crocodile extends Animal {
     @Override
-    public void move(int x, int y) {
+    public Position2D move(int x, int y) {
         int newx = this.nextPosition.getX() + x;
         int newy = this.nextPosition.getY() + y;
         Tile tile = super.world.getTile(newx, newy);
         if(tile instanceof DesertTile) {
-            return;
+            return null;
         }
         nextPosition.move(x, y);
+        return nextPosition;
     }
 
     @Override
@@ -28,5 +29,10 @@ public class Crocodile extends Animal {
     @Override
     public char getAnimalChar() {
         return 'C';
+    }
+
+    @Override
+    public int getStrength() {
+        return 100;
     }
 }

@@ -11,10 +11,6 @@ public class AiBehaviour {
     }
 
     public void update() {
-        IAiState newState = currentState.update();
-        if(newState != null) {
-            currentState = newState;
-        }
     }
 
     public String debugInfo() {
