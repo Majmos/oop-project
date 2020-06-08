@@ -16,7 +16,9 @@ public class AiStateLookForFood implements IAiState {
 
     /**
      * Metoda odpowiadająca za znalezienie komórki z pożywieniem oraz kierowaniem się ku niemu.
-     * Gdy zwierze dojdzie do komórki z pożywieniem to przechodzi w stan jedzenia i gdy jest juz najedzone to zmienia stan.
+     * Gdy zwierze dojdzie do komórki z pożywieniem to przechodzi w stan jedzenia i gdy jest juz
+     * najedzone to zmienia stan.
+     * @return IAiState Zwraca nowy stan lub null aby pozostać w obecnym stanie.
      */
     @Override
     public IAiState update() {

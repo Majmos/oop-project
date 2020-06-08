@@ -14,6 +14,7 @@ public class AiStateEatCorpse implements IAiState {
     /**
      * Metoda odpowiada za zwiększenie się najedzenia zwierzęcia i zmniejszenie ilości mięsa na komórce.
      * Gdy jedzenie na komórce się skończy to zwierze zacznie polować na następną zwierzyne.
+     * @return IAiState Zwraca nowy stan lub null aby pozostać w obecnym stanie.
      */
     @Override
     public IAiState update() {

@@ -20,6 +20,7 @@ public class AiStateHunt implements IAiState {
      * Metoda jest odpowiedzialna za znaleźenie najbliższego roślinożercy oraz kierowanie się ku niemu.
      * Gdy zwierze dojdzie do ofiary to atakuje, jeśli zabije zwierze to przechodzi w stan jedzenia i gdy
      * jest najedzone to zmienia stan.
+     * @return IAiState Zwraca nowy stan lub null aby pozostać w obecnym stanie.
      */
     @Override
     public IAiState update() {

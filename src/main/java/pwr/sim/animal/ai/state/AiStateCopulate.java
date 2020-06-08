@@ -16,6 +16,7 @@ public class AiStateCopulate implements IAiState {
      * Metoda odpowiada za znaleźenie partnera tego samego gatunku oraz kierowanie się ku niemu.
      * Gdy zwierze dojdzie do partnera to utworzy się nowy osobnik tego samego gatunku i zwierze
      * zmieni stan.
+     * @return IAiState Zwraca nowy stan lub null aby pozostać w obecnym stanie.
      */
     @Override
     public IAiState update() {

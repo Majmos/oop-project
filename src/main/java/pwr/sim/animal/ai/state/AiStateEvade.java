@@ -15,6 +15,7 @@ public class AiStateEvade implements IAiState {
     /**
      * Metoda odpowiada za oddalanie się od najbliższego drapieżnika. Zwirze ucieka dopóki nie znajdzie
      * się w bezpiecznym dystansie od drapieżnika.
+     * @return IAiState Zwraca null aby pozostać w obecnym stanie.
      */
     @Override
     public IAiState update() {
